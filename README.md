@@ -216,4 +216,4 @@ Maintained by [Franklin Oladipo](https://github.com/frankdroid7)
 
 ## 📄 License
 
-[MIT](LICENSE)
+[BSD 3-Clause](LICENSE)
