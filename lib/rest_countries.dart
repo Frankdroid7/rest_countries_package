@@ -14,7 +14,7 @@ class RestCountries {
   static Future<List<CountryModel>> getAllCountries({
     required List<CountryFields> fields,
   }) {
-    return _repo.getAllCountries(fields: fields);
+   return _repo.getAllCountries(fields: fields);
   }
 
   static Future<List<CountryModel>> getCountriesByCapital({
@@ -39,6 +39,7 @@ class RestCountries {
     required String currency,
   }) {
     return _repo.getCountriesByCurrency(currency: currency);
+ 
   }
 
   static Future<List<CountryModel>> getCountriesByDemonym({

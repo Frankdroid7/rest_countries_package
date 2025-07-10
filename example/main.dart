@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:rest_countries_package/rest_countries.dart';
 
 void main() async {
@@ -10,7 +9,8 @@ void main() async {
 }
 
 void log(String message) {
-  debugPrint(message);
+  //ignore: avoid_print
+  print(message);
 }
 
 Future<void> getCountriesByRegion() async {

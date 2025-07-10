@@ -10,6 +10,10 @@ class CountriesApi {
     if (fields.length > 10) {
       throw Exception('Fields cannot be more than 10');
     }
+
+    if (fields.isEmpty) {
+      throw Exception('Fields cannot be empty');
+    }
     final String apiQueryFields = buildCountryQueryFields(
       countryFields: fields,
     );

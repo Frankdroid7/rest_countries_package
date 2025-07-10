@@ -12,11 +12,11 @@ dependencies:
     sdk: flutter
 
   http: ^1.4.0
-  mocktail: ^1.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mocktail: ^1.0.4
   flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
