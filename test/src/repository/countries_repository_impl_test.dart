@@ -11,7 +11,7 @@ class MockCountriesApi extends Mock implements CountriesApi {}
 
 void main() {
   group('Test the methods in CountriesRepositoryImpl', () {
-    late final jsonData;
+    late final List<Map<String, dynamic>> jsonData;
     late MockCountriesApi mockCountriesApi;
     late CountriesRepositoryImpl countriesRepositoryImpl;
 
