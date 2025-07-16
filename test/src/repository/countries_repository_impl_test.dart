@@ -1,11 +1,10 @@
-import 'dart:convert';
 import 'dart:io';
-
+import 'dart:convert';
 import 'package:test/test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:rest_countries/rest_countries.dart';
-import 'package:rest_countries/src/data/countries_api.dart';
-import 'package:rest_countries/src/repository/countries_repository_impl.dart';
+import 'package:rest_countries_data/rest_countries_data.dart';
+import 'package:rest_countries_data/src/data/countries_api.dart';
+import 'package:rest_countries_data/src/repository/countries_repository_impl.dart';
 
 class MockCountriesApi extends Mock implements CountriesApi {}
 

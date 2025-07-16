@@ -1,7 +1,7 @@
-import 'package:rest_countries/src/data/countries_api.dart';
-import 'package:rest_countries/src/domain/country_model.dart';
-import 'package:rest_countries/src/domain/enums/country_fields.dart';
-import 'package:rest_countries/src/repository/countries_repository.dart';
+import 'package:rest_countries_data/src/data/countries_api.dart';
+import 'package:rest_countries_data/src/domain/country_model.dart';
+import 'package:rest_countries_data/src/domain/enums/country_fields.dart';
+import 'package:rest_countries_data/src/repository/countries_repository.dart';
 
 /// Repository implementation for accessing country data via [CountriesApi].
 ///

@@ -1,5 +1,5 @@
-name: rest_countries
-description: "A Flutter package that acts as a wrapper for the REST Countries API, providing easy access to countries data."
+name: rest_countries_data
+description: "A Dart package that acts as a wrapper for the REST Countries API, providing easy access to countries data."
 version: 1.0.0
 repository: https://github.com/Frankdroid7/rest_countries_package
 

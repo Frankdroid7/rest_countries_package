@@ -1,5 +1,5 @@
-import 'package:rest_countries/src/data/api_helper.dart';
-import 'package:rest_countries/src/domain/enums/country_fields.dart';
+import 'package:rest_countries_data/src/data/api_helper.dart';
+import 'package:rest_countries_data/src/domain/enums/country_fields.dart';
 
 class CountriesApi {
   final ApiHelper apiHelper = ApiHelper();
