@@ -17,7 +17,6 @@ A Dart wrapper around the [REST Countries v3.1 API](https://restcountries.com) t
   - Independence status
 - Built-in `CountryModel` to map the API response
 - Enum-based `CountryFields` selector for fine-grained queries
-- Clean separation of concerns via Repository, API and Domain layers
 
 ---
 
@@ -35,7 +34,11 @@ dependencies:
 Then run:
 
 ```bash
+# For Dart users
 dart pub get
+
+# For Flutter users
+flutter pub get
 ```
 
 ### 2. Import It
@@ -182,22 +185,6 @@ void main() async {
     print(country.name.common);
   }
 }
-```
-
----
-
-## 📂 Testing
-
-- Uses `mocktail` for mocking `CountriesApi`
-- Includes repository tests that:
-  - verify method calls
-  - test happy/exception cases
-  - ensure proper mapping to `CountryModel`
-
-To run tests:
-
-```bash
-dart test
 ```
 
 ---

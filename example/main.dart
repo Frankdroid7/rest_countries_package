@@ -22,7 +22,7 @@ Future<void> getCountriesByRegion() async {
       log('- ${country.name?.common}');
     }
   } catch (e) {
-    log('Error fetching countries by region: \$e');
+    log('$e');
   }
 }
 
@@ -31,7 +31,7 @@ Future<void> getCountryByCode() async {
     final country = await RestCountries.getCountryByCode(code: 'NG');
     log('\nCountry with code NG: ${country.name?.official}');
   } catch (e) {
-    log('Error fetching country by code: \$e');
+     log('$e');
   }
 }
 
@@ -44,7 +44,7 @@ Future<void> getCountriesByCurrency() async {
       log('- ${country.name?.common}');
     }
   } catch (e) {
-    log('Error fetching countries by currency: \$e');
+    log('$e');
   }
 }
 
@@ -57,7 +57,7 @@ Future<void> getAllCountries() async {
       log('- ${country.name?.common}');
     }
   } catch (e) {
-    log('Error fetching all countries: \$e');
+    log('$e');
   }
 }
 
@@ -70,6 +70,6 @@ Future<void> getCountriesByIndependentStatus() async {
       log('- ${country.name?.common}');
     }
   } catch (e) {
-    log('Error fetching independent countries: \$e');
+    log('$e');
   }
 }

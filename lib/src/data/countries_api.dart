@@ -2,6 +2,7 @@ import 'package:rest_countries/src/data/api_helper.dart';
 import 'package:rest_countries/src/domain/enums/country_fields.dart';
 
 class CountriesApi {
+  final ApiHelper apiHelper = ApiHelper();
   static const String baseUrl = 'https://restcountries.com/v3.1';
 
   Future<List<Map<String, dynamic>>> getAllCountries({
@@ -18,8 +19,7 @@ class CountriesApi {
       countryFields: fields,
     );
 
-
-    return await ApiHelper.callAPI(
+    return await apiHelper.callAPI(
       apiUrl: '$baseUrl/all?fields=$apiQueryFields',
     );
   }
@@ -27,20 +27,20 @@ class CountriesApi {
   Future<List<Map<String, dynamic>>> getCountriesByCapital({
     required String capital,
   }) async {
-    return await ApiHelper.callAPI(apiUrl: '$baseUrl/capital/$capital');
+    return await apiHelper.callAPI(apiUrl: '$baseUrl/capital/$capital');
   }
 
   Future<List<Map<String, dynamic>>> getCountryByCode({
     required String code,
   }) async {
-    return await ApiHelper.callAPI(apiUrl: '$baseUrl/alpha/$code');
+    return await apiHelper.callAPI(apiUrl: '$baseUrl/alpha/$code');
   }
 
   Future<List<Map<String, dynamic>>> getCountryByCodes({
     required List<String> codes,
   }) async {
     String formattedCodes = codes.map((code) => code).toList().join(',');
-    return await ApiHelper.callAPI(
+    return await apiHelper.callAPI(
       apiUrl: '$baseUrl/alpha?codes=$formattedCodes',
     );
   }
@@ -48,43 +48,43 @@ class CountriesApi {
   Future<List<Map<String, dynamic>>> getCountryByCurrency({
     required String currency,
   }) async {
-    return await ApiHelper.callAPI(apiUrl: '$baseUrl/currency/$currency');
+    return await apiHelper.callAPI(apiUrl: '$baseUrl/currency/$currency');
   }
 
   Future<List<Map<String, dynamic>>> getCountryByDemonym({
     required String demonym,
   }) async {
-    return await ApiHelper.callAPI(apiUrl: '$baseUrl/demonym/$demonym');
+    return await apiHelper.callAPI(apiUrl: '$baseUrl/demonym/$demonym');
   }
 
   Future<List<Map<String, dynamic>>> getCountryByLanguage({
     required String language,
   }) async {
-    return await ApiHelper.callAPI(apiUrl: '$baseUrl/lang/$language');
+    return await apiHelper.callAPI(apiUrl: '$baseUrl/lang/$language');
   }
 
   Future<List<Map<String, dynamic>>> getCountryByRegion({
     required String region,
   }) async {
-    return await ApiHelper.callAPI(apiUrl: '$baseUrl/region/$region');
+    return await apiHelper.callAPI(apiUrl: '$baseUrl/region/$region');
   }
 
   Future<List<Map<String, dynamic>>> getCountryBySubRegion({
     required String subRegion,
   }) async {
-    return await ApiHelper.callAPI(apiUrl: '$baseUrl/subregion/$subRegion');
+    return await apiHelper.callAPI(apiUrl: '$baseUrl/subregion/$subRegion');
   }
 
   Future<List<Map<String, dynamic>>> getCountryByTranslation({
     required String translation,
   }) async {
-    return await ApiHelper.callAPI(apiUrl: '$baseUrl/translation/$translation');
+    return await apiHelper.callAPI(apiUrl: '$baseUrl/translation/$translation');
   }
 
   Future<List<Map<String, dynamic>>> getCountryByFullName({
     required String fullName,
   }) async {
-    return await ApiHelper.callAPI(
+    return await apiHelper.callAPI(
       apiUrl: '$baseUrl/name/$fullName?fullText=true',
     );
   }
@@ -92,7 +92,7 @@ class CountriesApi {
   Future<List<Map<String, dynamic>>> getCountriesByName({
     required String name,
   }) async {
-    return await ApiHelper.callAPI(apiUrl: '$baseUrl/name/$name');
+    return await apiHelper.callAPI(apiUrl: '$baseUrl/name/$name');
   }
 
   Future<List<Map<String, dynamic>>> getCountriesByIndependentStatus({
@@ -103,7 +103,7 @@ class CountriesApi {
       countryFields: fields,
     );
 
-    return await ApiHelper.callAPI(
+    return await apiHelper.callAPI(
       apiUrl: '$baseUrl/independent?status=$independent&fields=$apiQueryFields',
     );
   }
