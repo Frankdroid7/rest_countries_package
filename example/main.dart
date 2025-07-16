@@ -15,8 +15,7 @@ void log(String message) {
 
 Future<void> getCountriesByRegion() async {
   try {
-    final List<CountryModel> countries =
-        await RestCountries.getCountriesByRegion(region: 'Africa');
+    final List<CountryModel> countries = await RestCountries.getCountriesByRegion(region: 'Africa');
     log('\nCountries in Africa:');
     for (final CountryModel country in countries) {
       log('- ${country.name?.common}');
