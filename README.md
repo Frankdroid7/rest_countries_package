@@ -55,6 +55,7 @@ final countries = await RestCountries.getAllCountries(
   fields: [CountryFields.name, CountryFields.capital, CountryFields.region],
 );
 ```
+When using the `fields` parameter in this method (`getAllCountries()`), the maximum number of allowed fields is **10**. This limit is enforced by the [REST Countries API](https://gitlab.com/restcountries/restcountries/-/issues/265).
 
 ### Get Countries by Capital
 
@@ -145,7 +146,7 @@ CountryFields.languages
 // etc.
 ```
 
-**Note**: Maximum 10 fields per request for `getAllCountries()` and some filtered endpoints.
+**Note**: Maximum 10 fields per request for `getAllCountries()`
 
 ---
 
