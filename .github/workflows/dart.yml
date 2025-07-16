@@ -31,6 +31,7 @@ jobs:
       # Fails the workflow if any files need formatting.
       - name: Check Dart formatting
         run: |
+          set -o pipefail
           dart format --output=none --set-exit-if-changed . 2>&1 | grep '^Changed ' | sed 's/^Changed /Needs formatting: /'
 
       # Consider passing '--fatal-infos' for slightly stricter analysis.
