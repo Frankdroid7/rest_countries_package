@@ -56,9 +56,11 @@ void main() {
       "GIVEN valid fields, WHEN getAllCountries is called, THEN returns a List<CountryModel>",
       () async {
         when(
-          () => mockCountriesApi.getAllCountries(fields: <CountryFields>[CountryFields.area]),
+          () => mockCountriesApi
+              .getAllCountries(fields: <CountryFields>[CountryFields.area]),
         ).thenAnswer(
-          (_) => Future<List<Map<String, dynamic>>>.value(<Map<String, dynamic>>[
+          (_) =>
+              Future<List<Map<String, dynamic>>>.value(<Map<String, dynamic>>[
             <String, dynamic>{
               "name": <String, Object>{
                 "common": "Mayotte",
@@ -74,7 +76,8 @@ void main() {
           ]),
         );
 
-        final List<CountryModel> getAllCountries = await countriesRepositoryImpl.getAllCountries(
+        final List<CountryModel> getAllCountries =
+            await countriesRepositoryImpl.getAllCountries(
           fields: <CountryFields>[CountryFields.area],
         );
 
@@ -88,7 +91,8 @@ void main() {
       () async {
         when(
           () => mockCountriesApi.getCountriesByCapital(capital: 'Abuja'),
-        ).thenAnswer((_) => Future<List<Map<String, dynamic>>>.value(<Map<String, dynamic>>[]));
+        ).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(<Map<String, dynamic>>[]));
         await countriesRepositoryImpl.getCountriesByCapital(capital: 'Abuja');
 
         verify(
@@ -102,7 +106,7 @@ void main() {
       () async {
         when(
           () => mockCountriesApi.getCountryByCode(code: '170'),
-        ).thenAnswer((_) => Future<List<Map<String, dynamic>> >.value(jsonData));
+        ).thenAnswer((_) => Future<List<Map<String, dynamic>>>.value(jsonData));
 
         final CountryModel getCountriesByCode =
             await countriesRepositoryImpl.getCountryByCode(code: '170');
@@ -118,7 +122,8 @@ void main() {
         ).thenAnswer((_) => Future<List<Map<String, dynamic>>>.value(jsonData));
 
         final List<CountryModel> getCountriesByCode =
-            await countriesRepositoryImpl.getCountriesByCodes(codes: <String>['170']);
+            await countriesRepositoryImpl
+                .getCountriesByCodes(codes: <String>['170']);
 
         expect(getCountriesByCode, isA<List<CountryModel>>());
       },
@@ -128,10 +133,12 @@ void main() {
       () async {
         when(
           () => mockCountriesApi.getCountryByCurrency(currency: 'NGN'),
-        ).thenAnswer((_) => Future<List<Map<String, dynamic>>>.value(<Map<String, dynamic>>[]));
+        ).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(<Map<String, dynamic>>[]));
 
-        final List<CountryModel> getCountryByCurrency = await countriesRepositoryImpl
-            .getCountriesByCurrency(currency: 'NGN');
+        final List<CountryModel> getCountryByCurrency =
+            await countriesRepositoryImpl.getCountriesByCurrency(
+                currency: 'NGN');
 
         expect(getCountryByCurrency, isEmpty);
       },

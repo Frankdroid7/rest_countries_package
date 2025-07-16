@@ -79,20 +79,17 @@ class CountryModel {
   factory CountryModel.fromJson(Map<String, dynamic> json) {
     return CountryModel(
       name: json['name'] != null ? Name.fromJson(json['name']) : null,
-
       cca2: json['cca2'],
       cca3: json['cca3'],
       ccn3: json['ccn3'],
       cioc: json['cioc'],
       fifa: json['fifa'],
       landlocked: json['landlocked'],
-
       independent: json['independent'],
       status: json['status'],
       unMember: json['unMember'],
-      capital: (json['capital'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
+      capital:
+          (json['capital'] as List<dynamic>?)?.map((e) => e as String).toList(),
       region: json['region'],
       subregion: json['subregion'],
       continents: (json['continents'] as List<dynamic>?)
@@ -152,7 +149,8 @@ class Name {
   Name({this.common, this.official, this.nativeName});
 
   factory Name.fromJson(Map<String, dynamic> json) {
-    final Map<String, Translation>? native = (json['nativeName'] as Map<String, dynamic>?)?.map(
+    final Map<String, Translation>? native =
+        (json['nativeName'] as Map<String, dynamic>?)?.map(
       (String k, v) => MapEntry(k, Translation.fromJson(v)),
     );
     return Name(
@@ -180,9 +178,9 @@ class Idd {
   Idd({this.root, this.suffixes});
 
   factory Idd.fromJson(Map<String, dynamic> json) => Idd(
-    root: json['root'],
-    suffixes: (json['suffixes'] as List<dynamic>?)?.cast<String>(),
-  );
+        root: json['root'],
+        suffixes: (json['suffixes'] as List<dynamic>?)?.cast<String>(),
+      );
 }
 
 class Translation {
@@ -214,11 +212,12 @@ class RegionalBloc {
   RegionalBloc({this.acronym, this.name, this.otherAcronyms, this.otherNames});
 
   factory RegionalBloc.fromJson(Map<String, dynamic> json) => RegionalBloc(
-    acronym: json['acronym'],
-    name: json['name'],
-    otherAcronyms: (json['otherAcronyms'] as List<dynamic>?)?.cast<String>(),
-    otherNames: (json['otherNames'] as List<dynamic>?)?.cast<String>(),
-  );
+        acronym: json['acronym'],
+        name: json['name'],
+        otherAcronyms:
+            (json['otherAcronyms'] as List<dynamic>?)?.cast<String>(),
+        otherNames: (json['otherNames'] as List<dynamic>?)?.cast<String>(),
+      );
 }
 
 class CapitalInfo {
@@ -243,9 +242,8 @@ class Car {
 
   factory Car.fromJson(Map<String, dynamic> json) {
     return Car(
-      signs: (json['signs'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
+      signs:
+          (json['signs'] as List<dynamic>?)?.map((e) => e as String).toList(),
       side: json['side'],
     );
   }

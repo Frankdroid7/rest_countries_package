@@ -15,8 +15,7 @@ void log(String message) {
 
 Future<void> getCountriesByRegion() async {
   try {
-    final List<CountryModel> countries =
-        await RestCountries.getCountriesByRegion(region: 'Africa');
+    final List<CountryModel> countries = await RestCountries.getCountriesByRegion(region: 'Africa');
     log('\nCountries in Africa:');
     for (final CountryModel country in countries) {
       log('- ${country.name?.common}');
@@ -28,10 +27,11 @@ Future<void> getCountriesByRegion() async {
 
 Future<void> getCountryByCode() async {
   try {
-    final CountryModel country = await RestCountries.getCountryByCode(code: 'NG');
+    final CountryModel country =
+        await RestCountries.getCountryByCode(code: 'NG');
     log('\nCountry with code NG: ${country.name?.official}');
   } catch (e) {
-     log('$e');
+    log('$e');
   }
 }
 
@@ -50,8 +50,8 @@ Future<void> getCountriesByCurrency() async {
 
 Future<void> getAllCountries() async {
   try {
-    final List<CountryModel> countries =
-        await RestCountries.getAllCountries(fields: <CountryFields>[CountryFields.name]);
+    final List<CountryModel> countries = await RestCountries.getAllCountries(
+        fields: <CountryFields>[CountryFields.name]);
     log('\nAll countries (limited fields):');
     for (final CountryModel country in countries.take(5)) {
       log('- ${country.name?.common}');

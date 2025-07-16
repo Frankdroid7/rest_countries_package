@@ -20,10 +20,12 @@ class CountriesRepositoryImpl implements CountryRepository {
   Future<List<CountryModel>> getAllCountries({
     required List<CountryFields> fields,
   }) async {
-    List<Map<String, dynamic>> response = await countriesApi.getAllCountries(fields: fields);
+    List<Map<String, dynamic>> response =
+        await countriesApi.getAllCountries(fields: fields);
 
-    List<CountryModel> countryModelList =
-        response.map((Map<String, dynamic> country) => CountryModel.fromJson(country)).toList();
+    List<CountryModel> countryModelList = response
+        .map((Map<String, dynamic> country) => CountryModel.fromJson(country))
+        .toList();
 
     return countryModelList;
   }
@@ -35,10 +37,12 @@ class CountriesRepositoryImpl implements CountryRepository {
   Future<List<CountryModel>> getCountriesByCapital({
     required String capital,
   }) async {
-    List<Map<String, dynamic>> response = await countriesApi.getCountriesByCapital(capital: capital);
+    List<Map<String, dynamic>> response =
+        await countriesApi.getCountriesByCapital(capital: capital);
 
-    List<CountryModel> countryModelList =
-        response.map((Map<String, dynamic> country) => CountryModel.fromJson(country)).toList();
+    List<CountryModel> countryModelList = response
+        .map((Map<String, dynamic> country) => CountryModel.fromJson(country))
+        .toList();
 
     return countryModelList;
   }
@@ -48,7 +52,8 @@ class CountriesRepositoryImpl implements CountryRepository {
   /// Returns a single [CountryModel].
   @override
   Future<CountryModel> getCountryByCode({required String code}) async {
-    List<Map<String, dynamic>> response = await countriesApi.getCountryByCode(code: code);
+    List<Map<String, dynamic>> response =
+        await countriesApi.getCountryByCode(code: code);
 
     return CountryModel.fromJson(response.first);
   }
@@ -60,10 +65,12 @@ class CountriesRepositoryImpl implements CountryRepository {
   Future<List<CountryModel>> getCountriesByCodes({
     required List<String> codes,
   }) async {
-    List<Map<String, dynamic>> response = await countriesApi.getCountryByCodes(codes: codes);
+    List<Map<String, dynamic>> response =
+        await countriesApi.getCountryByCodes(codes: codes);
 
-    List<CountryModel> countryModelList =
-        response.map((Map<String, dynamic> country) => CountryModel.fromJson(country)).toList();
+    List<CountryModel> countryModelList = response
+        .map((Map<String, dynamic> country) => CountryModel.fromJson(country))
+        .toList();
 
     return countryModelList;
   }
@@ -75,10 +82,12 @@ class CountriesRepositoryImpl implements CountryRepository {
   Future<List<CountryModel>> getCountriesByCurrency({
     required String currency,
   }) async {
-    List<Map<String, dynamic>> response = await countriesApi.getCountryByCurrency(currency: currency);
+    List<Map<String, dynamic>> response =
+        await countriesApi.getCountryByCurrency(currency: currency);
 
-    List<CountryModel> countryModelList =
-        response.map((Map<String, dynamic> country) => CountryModel.fromJson(country)).toList();
+    List<CountryModel> countryModelList = response
+        .map((Map<String, dynamic> country) => CountryModel.fromJson(country))
+        .toList();
 
     return countryModelList;
   }
@@ -90,10 +99,12 @@ class CountriesRepositoryImpl implements CountryRepository {
   Future<List<CountryModel>> getCountriesByDemonym({
     required String demonym,
   }) async {
-    List<Map<String, dynamic>> response = await countriesApi.getCountryByDemonym(demonym: demonym);
+    List<Map<String, dynamic>> response =
+        await countriesApi.getCountryByDemonym(demonym: demonym);
 
-    List<CountryModel> countryModelList =
-        response.map((Map<String, dynamic> country) => CountryModel.fromJson(country)).toList();
+    List<CountryModel> countryModelList = response
+        .map((Map<String, dynamic> country) => CountryModel.fromJson(country))
+        .toList();
 
     return countryModelList;
   }
@@ -105,10 +116,12 @@ class CountriesRepositoryImpl implements CountryRepository {
   Future<List<CountryModel>> getCountriesByLanguage({
     required String language,
   }) async {
-    List<Map<String, dynamic>> response = await countriesApi.getCountryByLanguage(language: language);
+    List<Map<String, dynamic>> response =
+        await countriesApi.getCountryByLanguage(language: language);
 
-    List<CountryModel> countryModelList =
-        response.map((Map<String, dynamic> country) => CountryModel.fromJson(country)).toList();
+    List<CountryModel> countryModelList = response
+        .map((Map<String, dynamic> country) => CountryModel.fromJson(country))
+        .toList();
 
     return countryModelList;
   }
@@ -120,10 +133,12 @@ class CountriesRepositoryImpl implements CountryRepository {
   Future<List<CountryModel>> getCountriesByRegion({
     required String region,
   }) async {
-    List<Map<String, dynamic>> response = await countriesApi.getCountryByRegion(region: region);
+    List<Map<String, dynamic>> response =
+        await countriesApi.getCountryByRegion(region: region);
 
-    List<CountryModel> countryModelList =
-        response.map((Map<String, dynamic> country) => CountryModel.fromJson(country)).toList();
+    List<CountryModel> countryModelList = response
+        .map((Map<String, dynamic> country) => CountryModel.fromJson(country))
+        .toList();
 
     return countryModelList;
   }
@@ -135,12 +150,14 @@ class CountriesRepositoryImpl implements CountryRepository {
   Future<List<CountryModel>> getCountriesBySubRegion({
     required String subRegion,
   }) async {
-    List<Map<String, dynamic>> response = await countriesApi.getCountryBySubRegion(
+    List<Map<String, dynamic>> response =
+        await countriesApi.getCountryBySubRegion(
       subRegion: subRegion,
     );
 
-    List<CountryModel> countryModelList =
-        response.map((Map<String, dynamic> country) => CountryModel.fromJson(country)).toList();
+    List<CountryModel> countryModelList = response
+        .map((Map<String, dynamic> country) => CountryModel.fromJson(country))
+        .toList();
 
     return countryModelList;
   }
@@ -152,12 +169,14 @@ class CountriesRepositoryImpl implements CountryRepository {
   Future<List<CountryModel>> getCountriesByTranslation({
     required String translation,
   }) async {
-    List<Map<String, dynamic>> response = await countriesApi.getCountryByTranslation(
+    List<Map<String, dynamic>> response =
+        await countriesApi.getCountryByTranslation(
       translation: translation,
     );
 
-    List<CountryModel> countryModelList =
-        response.map((Map<String, dynamic> country) => CountryModel.fromJson(country)).toList();
+    List<CountryModel> countryModelList = response
+        .map((Map<String, dynamic> country) => CountryModel.fromJson(country))
+        .toList();
 
     return countryModelList;
   }
@@ -167,7 +186,8 @@ class CountriesRepositoryImpl implements CountryRepository {
   /// Returns a single [CountryModel].
   @override
   Future<CountryModel> getCountryByFullName({required String fullName}) async {
-    List<Map<String, dynamic>> response = await countriesApi.getCountryByFullName(fullName: fullName);
+    List<Map<String, dynamic>> response =
+        await countriesApi.getCountryByFullName(fullName: fullName);
 
     return CountryModel.fromJson(response.first);
   }
@@ -177,10 +197,12 @@ class CountriesRepositoryImpl implements CountryRepository {
   /// Returns a list of [CountryModel].
   @override
   Future<List<CountryModel>> getCountriesByName({required String name}) async {
-    List<Map<String, dynamic>> response = await countriesApi.getCountriesByName(name: name);
+    List<Map<String, dynamic>> response =
+        await countriesApi.getCountriesByName(name: name);
 
-    List<CountryModel> countryModelList =
-        response.map((Map<String, dynamic> country) => CountryModel.fromJson(country)).toList();
+    List<CountryModel> countryModelList = response
+        .map((Map<String, dynamic> country) => CountryModel.fromJson(country))
+        .toList();
 
     return countryModelList;
   }
@@ -196,13 +218,15 @@ class CountriesRepositoryImpl implements CountryRepository {
     bool independent = true,
     List<CountryFields> fields = const <CountryFields>[],
   }) async {
-    List<Map<String, dynamic>> response = await countriesApi.getCountriesByIndependentStatus(
+    List<Map<String, dynamic>> response =
+        await countriesApi.getCountriesByIndependentStatus(
       independent: independent,
       fields: fields,
     );
 
-    List<CountryModel> countryModelList =
-        response.map((Map<String, dynamic> country) => CountryModel.fromJson(country)).toList();
+    List<CountryModel> countryModelList = response
+        .map((Map<String, dynamic> country) => CountryModel.fromJson(country))
+        .toList();
 
     return countryModelList;
   }

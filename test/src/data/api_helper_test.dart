@@ -21,7 +21,8 @@ void main() {
             Future<List<Map<String, dynamic>>>.value(
                 List<Map<String, dynamic>>.from(jsonDecode(mockData))));
 
-        List<Map<String, dynamic>> rest = await mockApiHelper.callAPI(apiUrl: url);
+        List<Map<String, dynamic>> rest =
+            await mockApiHelper.callAPI(apiUrl: url);
 
         expect(rest, isA<List<Map<String, dynamic>>>());
       },
