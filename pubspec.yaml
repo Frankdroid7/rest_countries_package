@@ -4,7 +4,7 @@ version: 1.0.0
 repository: https://github.com/Frankdroid7/rest_countries_package
 
 environment:
-  sdk: ^3.0.0
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   http: ^1.4.0
