@@ -3,7 +3,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [1.0.0] - 2025-07-16
-- 🎉 Initial release of `rest_countries` Dart package.
+
+- 🎉 Initial release of `rest_countries_data` Dart package.
 - Provides a wrapper around the [restcountries.com](https://restcountries.com) API.
 - Features include:
   - `getAllCountries` with field filtering (max 10)

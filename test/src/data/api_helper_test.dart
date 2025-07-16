@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:test/test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:rest_countries/src/data/api_helper.dart';
+import 'package:rest_countries_data/src/data/api_helper.dart';
 
 class MockApiHelper extends Mock implements ApiHelper {}
 

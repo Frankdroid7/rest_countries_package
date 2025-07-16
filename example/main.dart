@@ -1,4 +1,4 @@
-import 'package:rest_countries/rest_countries.dart';
+import 'package:rest_countries_data/rest_countries_data.dart';
 
 void main() async {
   await getCountriesByRegion();

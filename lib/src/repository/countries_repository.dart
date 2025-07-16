@@ -1,5 +1,5 @@
-import 'package:rest_countries/src/domain/country_model.dart';
-import 'package:rest_countries/src/domain/enums/country_fields.dart';
+import 'package:rest_countries_data/src/domain/country_model.dart';
+import 'package:rest_countries_data/src/domain/enums/country_fields.dart';
 
 abstract class CountryRepository {
   Future<List<CountryModel>> getAllCountries({

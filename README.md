@@ -1,4 +1,4 @@
-# rest_countries
+# rest_countries_data
 
 A Dart wrapper around the [REST Countries v3.1 API](https://restcountries.com) that provides a fully-typed, developer-friendly interface for accessing detailed country data.
 
@@ -17,6 +17,7 @@ A Dart wrapper around the [REST Countries v3.1 API](https://restcountries.com) t
   - Independence status
 - Built-in `CountryModel` to map the API response
 - Enum-based `CountryFields` selector for fine-grained queries
+- Clean separation of concerns via Repository, API and Domain layers
 
 ---
 
@@ -28,7 +29,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  rest_countries: ^1.0.0
+  rest_countries_data: ^1.0.0
 ```
 
 Then run:
@@ -44,7 +45,7 @@ flutter pub get
 ### 2. Import It
 
 ```dart
-import 'package:rest_countries/rest_countries.dart';
+import 'package:rest_countries_data/rest_countries_data.dart';
 ```
 
 ---
@@ -58,7 +59,12 @@ final countries = await RestCountries.getAllCountries(
   fields: [CountryFields.name, CountryFields.capital, CountryFields.region],
 );
 ```
-When using the `fields` parameter in this method (`getAllCountries()`), the maximum number of allowed fields is **10**. This limit is enforced by the [REST Countries API](https://gitlab.com/restcountries/restcountries/-/issues/265).
+## Field Limitation ⚠️
+When using the `fields` parameter in methods like `getAllCountries`, the maximum number of allowed fields is **10**. This limit is enforced by the [REST Countries API](https://restcountries.com/).
+
+Also note: Whenever you specify the fields property, the properties that will be available in the returned `CountryModel` depend entirely on which `CountryFields` you request. If you omit a field, the corresponding property in `CountryModel` may be `null`.
+
+
 
 ### Get Countries by Capital
 
@@ -121,12 +127,12 @@ final countries = await RestCountries.getCountriesByIndependentStatus(
 
 ```dart
 class CountryModel {
-  final Name name;
+  final Name? name;
   final List<String>? capital;
   final String? region;
   final String? subregion;
   final Map<String, dynamic>? flags;
-  // ... more fields depending on selected CountryFields
+  // ...
 }
 
 class Name {
@@ -157,7 +163,7 @@ CountryFields.languages
 
 | Method                                   | Description                                  |
 | ---------------------------------------- | -------------------------------------------- |
-| `getAllCountries({fields})`              | Get all countries with selected fields       |
+| `getAllCountries({required fields})`              | Get all countries with selected fields       |
 | `getCountriesByCapital(capital)`         | Filter by capital city                       |
 | `getCountryByCode(code)`                 | Get a single country by ISO code             |
 | `getCountriesByCodes(codes)`             | Get multiple countries by ISO codes          |
@@ -176,13 +182,13 @@ CountryFields.languages
 ## 📊 Example (Run it)
 
 ```dart
-import 'package:rest_countries/rest_countries.dart';
+import 'package:rest_countries_data/rest_countries_data.dart';
 
 void main() async {
   final countries = await RestCountries.getCountriesByRegion(region: 'Africa');
 
   for (var country in countries) {
-    print(country.name.common);
+    print(country.name?.common);
   }
 }
 ```
