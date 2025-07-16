@@ -1,4 +1,13 @@
-include: package:flutter_lints/flutter.yaml
+include: package:lints/recommended.yaml
 
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+linter:
+  rules:
+    avoid_print: true
+    prefer_const_constructors: true
+    prefer_final_fields: true
+    avoid_unused_constructor_parameters: true
+    unnecessary_null_in_if_null_operators: true
+    no_duplicate_case_values: true
+    prefer_is_empty: true
+    always_specify_types: true
+    avoid_single_cascade_in_expression_statements: true

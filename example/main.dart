@@ -15,10 +15,10 @@ void log(String message) {
 
 Future<void> getCountriesByRegion() async {
   try {
-    final countries =
+    final List<CountryModel> countries =
         await RestCountries.getCountriesByRegion(region: 'Africa');
     log('\nCountries in Africa:');
-    for (final country in countries) {
+    for (final CountryModel country in countries) {
       log('- ${country.name?.common}');
     }
   } catch (e) {
@@ -28,7 +28,7 @@ Future<void> getCountriesByRegion() async {
 
 Future<void> getCountryByCode() async {
   try {
-    final country = await RestCountries.getCountryByCode(code: 'NG');
+    final CountryModel country = await RestCountries.getCountryByCode(code: 'NG');
     log('\nCountry with code NG: ${country.name?.official}');
   } catch (e) {
      log('$e');
@@ -37,10 +37,10 @@ Future<void> getCountryByCode() async {
 
 Future<void> getCountriesByCurrency() async {
   try {
-    final countries =
+    final List<CountryModel> countries =
         await RestCountries.getCountriesByCurrency(currency: 'USD');
     log('\nCountries using USD:');
-    for (final country in countries) {
+    for (final CountryModel country in countries) {
       log('- ${country.name?.common}');
     }
   } catch (e) {
@@ -50,10 +50,10 @@ Future<void> getCountriesByCurrency() async {
 
 Future<void> getAllCountries() async {
   try {
-    final countries =
-        await RestCountries.getAllCountries(fields: [CountryFields.name]);
+    final List<CountryModel> countries =
+        await RestCountries.getAllCountries(fields: <CountryFields>[CountryFields.name]);
     log('\nAll countries (limited fields):');
-    for (final country in countries.take(5)) {
+    for (final CountryModel country in countries.take(5)) {
       log('- ${country.name?.common}');
     }
   } catch (e) {
@@ -63,10 +63,10 @@ Future<void> getAllCountries() async {
 
 Future<void> getCountriesByIndependentStatus() async {
   try {
-    final countries =
+    final List<CountryModel> countries =
         await RestCountries.getCountriesByIndependentStatus(independent: true);
     log('\nIndependent countries:');
-    for (final country in countries.take(5)) {
+    for (final CountryModel country in countries.take(5)) {
       log('- ${country.name?.common}');
     }
   } catch (e) {

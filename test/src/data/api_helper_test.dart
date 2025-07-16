@@ -18,10 +18,10 @@ void main() {
       () async {
         final String url = 'https://restcountries.com/v3.1/all?fields=name';
         when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
-            Future.value(
+            Future<List<Map<String, dynamic>>>.value(
                 List<Map<String, dynamic>>.from(jsonDecode(mockData))));
 
-        var rest = await mockApiHelper.callAPI(apiUrl: url);
+        List<Map<String, dynamic>> rest = await mockApiHelper.callAPI(apiUrl: url);
 
         expect(rest, isA<List<Map<String, dynamic>>>());
       },
@@ -38,7 +38,7 @@ void main() {
           () => mockApiHelper.callAPI(apiUrl: url),
           throwsA(
             predicate(
-              (e) =>
+              (Object? e) =>
                   e is Exception && e.toString().contains('Country not found'),
             ),
           ),
@@ -57,7 +57,7 @@ void main() {
           () => mockApiHelper.callAPI(apiUrl: url),
           throwsA(
             predicate(
-              (e) =>
+              (Object? e) =>
                   e is Exception && e.toString().contains('Server error'),
             ),
           ),
@@ -67,7 +67,7 @@ void main() {
   });
 }
 
-var mockData = """[
+String mockData = """[
   {
     "name": {
       "common": "Togo",

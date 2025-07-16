@@ -9,9 +9,9 @@ class ApiHelper {
     required String apiUrl,
   }) async {
     try {
-      var response = await http.get(Uri.parse(apiUrl));
+      http.Response response = await http.get(Uri.parse(apiUrl));
       if (response.statusCode == 200) {
-        var rawData =
+        List<Map<String, dynamic>> rawData =
             List<Map<String, dynamic>>.from(jsonDecode(response.body));
         if (rawData.isEmpty) {
           throw Exception('No country found. Specify a valid field');

@@ -34,6 +34,6 @@ abstract class CountryRepository {
 
   Future<List<CountryModel>> getCountriesByIndependentStatus({
     bool independent = true,
-    List<CountryFields> fields = const [],
+    List<CountryFields> fields = const <CountryFields>[],
   });
 }

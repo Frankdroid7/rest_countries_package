@@ -117,5 +117,5 @@ extension CountryFieldsExtension on CountryFields {
 }
 
 String buildCountryQueryFields({required List<CountryFields> countryFields}) {
-  return countryFields.map((field) => field.apiValue).toList().join(',');
+  return countryFields.map((CountryFields field) => field.apiValue).toList().join(',');
 }

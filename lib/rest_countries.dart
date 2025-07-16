@@ -84,7 +84,7 @@ class RestCountries {
 
   static Future<List<CountryModel>> getCountriesByIndependentStatus({
     bool independent = true,
-    List<CountryFields> fields = const [],
+    List<CountryFields> fields = const <CountryFields>[],
   }) {
     return _repo.getCountriesByIndependentStatus(
       independent: independent,

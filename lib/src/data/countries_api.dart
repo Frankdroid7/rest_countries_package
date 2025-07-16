@@ -39,7 +39,7 @@ class CountriesApi {
   Future<List<Map<String, dynamic>>> getCountryByCodes({
     required List<String> codes,
   }) async {
-    String formattedCodes = codes.map((code) => code).toList().join(',');
+    String formattedCodes = codes.map((String code) => code).toList().join(',');
     return await apiHelper.callAPI(
       apiUrl: '$baseUrl/alpha?codes=$formattedCodes',
     );
@@ -97,7 +97,7 @@ class CountriesApi {
 
   Future<List<Map<String, dynamic>>> getCountriesByIndependentStatus({
     bool independent = true,
-    List<CountryFields> fields = const [],
+    List<CountryFields> fields = const <CountryFields>[],
   }) async {
     final String apiQueryFields = buildCountryQueryFields(
       countryFields: fields,

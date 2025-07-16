@@ -1,3 +1,4 @@
+//ignore_for_file: always_specify_types
 class CountryModel {
   final Name? name;
   final String? cca2;
@@ -100,7 +101,7 @@ class CountryModel {
       population: json['population'],
       area: (json['area'] is num) ? (json['area'] as num).toDouble() : null,
       gini: (json['gini'] as Map<String, dynamic>?)?.map(
-        (k, v) => MapEntry(k, (v as num).toDouble()),
+        (String k, v) => MapEntry(k, (v as num).toDouble()),
       ),
       timezones: (json['timezones'] as List<dynamic>?)?.cast<String>(),
       topLevelDomain: (json['tld'] as List<dynamic>?)?.cast<String>(),
@@ -110,14 +111,14 @@ class CountryModel {
       demonym: json['demonym'],
       borders: (json['borders'] as List<dynamic>?)?.cast<String>(),
       currencies: (json['currencies'] as Map<String, dynamic>?)?.map(
-        (k, v) => MapEntry(k, Currency.fromJson(v)),
+        (String k, v) => MapEntry(k, Currency.fromJson(v)),
       ),
       idd: json['idd'] != null ? Idd.fromJson(json['idd']) : null,
       languages: (json['languages'] as Map<String, dynamic>?)?.map(
-        (k, v) => MapEntry(k, v as String),
+        (String k, v) => MapEntry(k, v as String),
       ),
       translations: (json['translations'] as Map<String, dynamic>?)?.map(
-        (k, v) => MapEntry(k, Translation.fromJson(v)),
+        (String k, dynamic v) => MapEntry(k, Translation.fromJson(v)),
       ),
       flags: json['flags'] != null ? Flags.fromJson(json['flags']) : null,
       regionalBlocs: (json['regionalBlocs'] as List<dynamic>?)
@@ -125,7 +126,7 @@ class CountryModel {
           .toList(),
       altSpellings: (json['altSpellings'] as List<dynamic>?)
           ?.map((e) => e as String)
-          .toList(), // ✅ Deserialize
+          .toList(),
       capitalInfo: json['capitalInfo'] != null
           ? CapitalInfo.fromJson(json['capitalInfo'])
           : null,
@@ -137,7 +138,7 @@ class CountryModel {
       flag: json['flag'],
       startOfWeek: json['startOfWeek'],
       demonyms: (json['demonyms'] as Map<String, dynamic>?)?.map(
-        (key, value) => MapEntry(key, GenderedDemonym.fromJson(value)),
+        (String key, value) => MapEntry(key, GenderedDemonym.fromJson(value)),
       ),
     );
   }
@@ -151,8 +152,8 @@ class Name {
   Name({this.common, this.official, this.nativeName});
 
   factory Name.fromJson(Map<String, dynamic> json) {
-    final native = (json['nativeName'] as Map<String, dynamic>?)?.map(
-      (k, v) => MapEntry(k, Translation.fromJson(v)),
+    final Map<String, Translation>? native = (json['nativeName'] as Map<String, dynamic>?)?.map(
+      (String k, v) => MapEntry(k, Translation.fromJson(v)),
     );
     return Name(
       common: json['common'],
