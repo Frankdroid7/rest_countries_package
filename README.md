@@ -1,5 +1,4 @@
-
-# rest_countries_package
+# rest_countries
 
 A Dart wrapper around the [REST Countries v3.1 API](https://restcountries.com) that provides a fully-typed, developer-friendly interface for accessing detailed country data.
 
@@ -30,7 +29,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  rest_countries_package: ^0.0.1
+  rest_countries: ^1.0.0
 ```
 
 Then run:
@@ -42,7 +41,7 @@ dart pub get
 ### 2. Import It
 
 ```dart
-import 'package:rest_countries_package/rest_countries.dart';
+import 'package:rest_countries/rest_countries.dart';
 ```
 
 ---
@@ -152,28 +151,28 @@ CountryFields.languages
 
 ## 🔍 API Overview
 
-| Method                                      | Description                                     |
-|--------------------------------------------|-------------------------------------------------|
-| `getAllCountries({fields})`                | Get all countries with selected fields         |
-| `getCountriesByCapital(capital)`           | Filter by capital city                         |
-| `getCountryByCode(code)`                   | Get a single country by ISO code               |
-| `getCountriesByCodes(codes)`               | Get multiple countries by ISO codes            |
-| `getCountriesByCurrency(currency)`         | Filter by currency                             |
-| `getCountriesByDemonym(demonym)`           | Filter by demonym                              |
-| `getCountriesByLanguage(language)`         | Filter by spoken language                      |
-| `getCountriesByRegion(region)`             | Filter by region                               |
-| `getCountriesBySubRegion(subRegion)`       | Filter by subregion                            |
-| `getCountriesByTranslation(translation)`   | Filter by translated country name              |
-| `getCountryByFullName(fullName)`           | Get a country by its full name                 |
-| `getCountriesByName(name)`                 | Filter by partial or full name                 |
-| `getCountriesByIndependentStatus(...)`     | Filter by independence and optionally fields   |
+| Method                                   | Description                                  |
+| ---------------------------------------- | -------------------------------------------- |
+| `getAllCountries({fields})`              | Get all countries with selected fields       |
+| `getCountriesByCapital(capital)`         | Filter by capital city                       |
+| `getCountryByCode(code)`                 | Get a single country by ISO code             |
+| `getCountriesByCodes(codes)`             | Get multiple countries by ISO codes          |
+| `getCountriesByCurrency(currency)`       | Filter by currency                           |
+| `getCountriesByDemonym(demonym)`         | Filter by demonym                            |
+| `getCountriesByLanguage(language)`       | Filter by spoken language                    |
+| `getCountriesByRegion(region)`           | Filter by region                             |
+| `getCountriesBySubRegion(subRegion)`     | Filter by subregion                          |
+| `getCountriesByTranslation(translation)` | Filter by translated country name            |
+| `getCountryByFullName(fullName)`         | Get a country by its full name               |
+| `getCountriesByName(name)`               | Filter by partial or full name               |
+| `getCountriesByIndependentStatus(...)`   | Filter by independence and optionally fields |
 
 ---
 
 ## 📊 Example (Run it)
 
 ```dart
-import 'package:rest_countries_package/rest_countries.dart';
+import 'package:rest_countries/rest_countries.dart';
 
 void main() async {
   final countries = await RestCountries.getCountriesByRegion(region: 'Africa');

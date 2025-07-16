@@ -10,7 +10,6 @@ class ApiHelper {
   }) async {
     try {
       var response = await http.get(Uri.parse(apiUrl));
-
       if (response.statusCode == 200) {
         return List<Map<String, dynamic>>.from(jsonDecode(response.body));
       } else if (response.statusCode == 404) {

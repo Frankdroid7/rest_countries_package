@@ -1,4 +1,4 @@
-import 'package:rest_countries_package/rest_countries.dart';
+import 'package:rest_countries/rest_countries.dart';
 
 void main() async {
   await getCountriesByRegion();
@@ -15,7 +15,8 @@ void log(String message) {
 
 Future<void> getCountriesByRegion() async {
   try {
-    final countries = await RestCountries.getCountriesByRegion(region: 'Africa');
+    final countries =
+        await RestCountries.getCountriesByRegion(region: 'Africa');
     log('\nCountries in Africa:');
     for (final country in countries) {
       log('- ${country.name?.common}');
@@ -36,7 +37,8 @@ Future<void> getCountryByCode() async {
 
 Future<void> getCountriesByCurrency() async {
   try {
-    final countries = await RestCountries.getCountriesByCurrency(currency: 'USD');
+    final countries =
+        await RestCountries.getCountriesByCurrency(currency: 'USD');
     log('\nCountries using USD:');
     for (final country in countries) {
       log('- ${country.name?.common}');
@@ -48,7 +50,8 @@ Future<void> getCountriesByCurrency() async {
 
 Future<void> getAllCountries() async {
   try {
-    final countries = await RestCountries.getAllCountries(fields: [CountryFields.name]);
+    final countries =
+        await RestCountries.getAllCountries(fields: [CountryFields.name]);
     log('\nAll countries (limited fields):');
     for (final country in countries.take(5)) {
       log('- ${country.name?.common}');
@@ -60,7 +63,8 @@ Future<void> getAllCountries() async {
 
 Future<void> getCountriesByIndependentStatus() async {
   try {
-    final countries = await RestCountries.getCountriesByIndependentStatus(independent: true);
+    final countries =
+        await RestCountries.getCountriesByIndependentStatus(independent: true);
     log('\nIndependent countries:');
     for (final country in countries.take(5)) {
       log('- ${country.name?.common}');

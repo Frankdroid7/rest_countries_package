@@ -1,11 +1,10 @@
 export 'src/domain/country_model.dart';
 export 'src/domain/enums/country_fields.dart';
 
-import 'package:rest_countries_package/src/data/countries_api.dart';
-import 'package:rest_countries_package/src/domain/country_model.dart';
-import 'package:rest_countries_package/src/domain/enums/country_fields.dart';
-import 'package:rest_countries_package/src/repository/countries_repository_impl.dart';
-
+import 'package:rest_countries/src/data/countries_api.dart';
+import 'package:rest_countries/src/domain/country_model.dart';
+import 'package:rest_countries/src/domain/enums/country_fields.dart';
+import 'package:rest_countries/src/repository/countries_repository_impl.dart';
 
 class RestCountries {
   static final CountriesRepositoryImpl _repo =
@@ -14,7 +13,7 @@ class RestCountries {
   static Future<List<CountryModel>> getAllCountries({
     required List<CountryFields> fields,
   }) {
-   return _repo.getAllCountries(fields: fields);
+    return _repo.getAllCountries(fields: fields);
   }
 
   static Future<List<CountryModel>> getCountriesByCapital({
@@ -39,7 +38,6 @@ class RestCountries {
     required String currency,
   }) {
     return _repo.getCountriesByCurrency(currency: currency);
- 
   }
 
   static Future<List<CountryModel>> getCountriesByDemonym({

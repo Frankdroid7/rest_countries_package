@@ -1,7 +1,7 @@
-import 'package:rest_countries_package/src/data/countries_api.dart';
-import 'package:rest_countries_package/src/domain/country_model.dart';
-import 'package:rest_countries_package/src/domain/enums/country_fields.dart';
-import 'package:rest_countries_package/src/repository/countries_repository.dart';
+import 'package:rest_countries/src/data/countries_api.dart';
+import 'package:rest_countries/src/domain/country_model.dart';
+import 'package:rest_countries/src/domain/enums/country_fields.dart';
+import 'package:rest_countries/src/repository/countries_repository.dart';
 
 class CountriesRepositoryImpl implements CountryRepository {
   final CountriesApi countriesApi;
@@ -13,9 +13,8 @@ class CountriesRepositoryImpl implements CountryRepository {
   }) async {
     var response = await countriesApi.getAllCountries(fields: fields);
 
-    List<CountryModel> countryModelList = response
-        .map((country) => CountryModel.fromJson(country))
-        .toList();
+    List<CountryModel> countryModelList =
+        response.map((country) => CountryModel.fromJson(country)).toList();
 
     return countryModelList;
   }
@@ -26,9 +25,8 @@ class CountriesRepositoryImpl implements CountryRepository {
   }) async {
     var response = await countriesApi.getCountriesByCapital(capital: capital);
 
-    List<CountryModel> countryModelList = response
-        .map((country) => CountryModel.fromJson(country))
-        .toList();
+    List<CountryModel> countryModelList =
+        response.map((country) => CountryModel.fromJson(country)).toList();
 
     return countryModelList;
   }
@@ -46,9 +44,8 @@ class CountriesRepositoryImpl implements CountryRepository {
   }) async {
     var response = await countriesApi.getCountryByCodes(codes: codes);
 
-    List<CountryModel> countryModelList = response
-        .map((country) => CountryModel.fromJson(country))
-        .toList();
+    List<CountryModel> countryModelList =
+        response.map((country) => CountryModel.fromJson(country)).toList();
 
     return countryModelList;
   }
@@ -59,9 +56,8 @@ class CountriesRepositoryImpl implements CountryRepository {
   }) async {
     var response = await countriesApi.getCountryByCurrency(currency: currency);
 
-    List<CountryModel> countryModelList = response
-        .map((country) => CountryModel.fromJson(country))
-        .toList();
+    List<CountryModel> countryModelList =
+        response.map((country) => CountryModel.fromJson(country)).toList();
 
     return countryModelList;
   }
@@ -72,9 +68,8 @@ class CountriesRepositoryImpl implements CountryRepository {
   }) async {
     var response = await countriesApi.getCountryByDemonym(demonym: demonym);
 
-    List<CountryModel> countryModelList = response
-        .map((country) => CountryModel.fromJson(country))
-        .toList();
+    List<CountryModel> countryModelList =
+        response.map((country) => CountryModel.fromJson(country)).toList();
 
     return countryModelList;
   }
@@ -85,9 +80,8 @@ class CountriesRepositoryImpl implements CountryRepository {
   }) async {
     var response = await countriesApi.getCountryByLanguage(language: language);
 
-    List<CountryModel> countryModelList = response
-        .map((country) => CountryModel.fromJson(country))
-        .toList();
+    List<CountryModel> countryModelList =
+        response.map((country) => CountryModel.fromJson(country)).toList();
 
     return countryModelList;
   }
@@ -98,9 +92,8 @@ class CountriesRepositoryImpl implements CountryRepository {
   }) async {
     var response = await countriesApi.getCountryByRegion(region: region);
 
-    List<CountryModel> countryModelList = response
-        .map((country) => CountryModel.fromJson(country))
-        .toList();
+    List<CountryModel> countryModelList =
+        response.map((country) => CountryModel.fromJson(country)).toList();
 
     return countryModelList;
   }
@@ -113,9 +106,8 @@ class CountriesRepositoryImpl implements CountryRepository {
       subRegion: subRegion,
     );
 
-    List<CountryModel> countryModelList = response
-        .map((country) => CountryModel.fromJson(country))
-        .toList();
+    List<CountryModel> countryModelList =
+        response.map((country) => CountryModel.fromJson(country)).toList();
 
     return countryModelList;
   }
@@ -128,9 +120,8 @@ class CountriesRepositoryImpl implements CountryRepository {
       translation: translation,
     );
 
-    List<CountryModel> countryModelList = response
-        .map((country) => CountryModel.fromJson(country))
-        .toList();
+    List<CountryModel> countryModelList =
+        response.map((country) => CountryModel.fromJson(country)).toList();
 
     return countryModelList;
   }
@@ -146,9 +137,8 @@ class CountriesRepositoryImpl implements CountryRepository {
   Future<List<CountryModel>> getCountriesByName({required String name}) async {
     var response = await countriesApi.getCountriesByName(name: name);
 
-    List<CountryModel> countryModelList = response
-        .map((country) => CountryModel.fromJson(country))
-        .toList();
+    List<CountryModel> countryModelList =
+        response.map((country) => CountryModel.fromJson(country)).toList();
 
     return countryModelList;
   }
@@ -163,9 +153,8 @@ class CountriesRepositoryImpl implements CountryRepository {
       fields: fields,
     );
 
-    List<CountryModel> countryModelList = response
-        .map((country) => CountryModel.fromJson(country))
-        .toList();
+    List<CountryModel> countryModelList =
+        response.map((country) => CountryModel.fromJson(country)).toList();
 
     return countryModelList;
   }

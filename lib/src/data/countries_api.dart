@@ -1,5 +1,5 @@
-import 'package:rest_countries_package/src/data/api_helper.dart';
-import 'package:rest_countries_package/src/domain/enums/country_fields.dart';
+import 'package:rest_countries/src/data/api_helper.dart';
+import 'package:rest_countries/src/domain/enums/country_fields.dart';
 
 class CountriesApi {
   static const String baseUrl = 'https://restcountries.com/v3.1';
@@ -17,6 +17,7 @@ class CountriesApi {
     final String apiQueryFields = buildCountryQueryFields(
       countryFields: fields,
     );
+
 
     return await ApiHelper.callAPI(
       apiUrl: '$baseUrl/all?fields=$apiQueryFields',

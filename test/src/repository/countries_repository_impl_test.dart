@@ -3,9 +3,9 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:rest_countries_package/rest_countries.dart';
-import 'package:rest_countries_package/src/data/countries_api.dart';
-import 'package:rest_countries_package/src/repository/countries_repository_impl.dart';
+import 'package:rest_countries/rest_countries.dart';
+import 'package:rest_countries/src/data/countries_api.dart';
+import 'package:rest_countries/src/repository/countries_repository_impl.dart';
 
 class MockCountriesApi extends Mock implements CountriesApi {}
 
@@ -44,8 +44,8 @@ void main() {
               (e) =>
                   e is Exception &&
                   e.toString().contains(
-                    'Country fields cannot be more than 10',
-                  ),
+                        'Country fields cannot be more than 10',
+                      ),
             ),
           ),
         );
@@ -104,8 +104,8 @@ void main() {
           () => mockCountriesApi.getCountryByCode(code: '170'),
         ).thenAnswer((_) => Future.value(jsonData));
 
-        final getCountriesByCode = await countriesRepositoryImpl
-            .getCountryByCode(code: '170');
+        final getCountriesByCode =
+            await countriesRepositoryImpl.getCountryByCode(code: '170');
 
         expect(getCountriesByCode, isA<CountryModel>());
       },
@@ -117,8 +117,8 @@ void main() {
           () => mockCountriesApi.getCountryByCodes(codes: ['170']),
         ).thenAnswer((_) => Future.value(jsonData));
 
-        final getCountriesByCode = await countriesRepositoryImpl
-            .getCountriesByCodes(codes: ['170']);
+        final getCountriesByCode =
+            await countriesRepositoryImpl.getCountriesByCodes(codes: ['170']);
 
         expect(getCountriesByCode, isA<List<CountryModel>>());
       },

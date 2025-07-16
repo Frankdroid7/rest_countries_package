@@ -1,5 +1,5 @@
-import 'package:rest_countries_package/src/domain/country_model.dart';
-import 'package:rest_countries_package/src/domain/enums/country_fields.dart';
+import 'package:rest_countries/src/domain/country_model.dart';
+import 'package:rest_countries/src/domain/enums/country_fields.dart';
 
 abstract class CountryRepository {
   Future<List<CountryModel>> getAllCountries({
@@ -32,10 +32,8 @@ abstract class CountryRepository {
     required String translation,
   });
 
-    Future<List<CountryModel>> getCountriesByIndependentStatus({
+  Future<List<CountryModel>> getCountriesByIndependentStatus({
     bool independent = true,
     List<CountryFields> fields = const [],
   });
-
-
 }
