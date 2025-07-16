@@ -31,15 +31,10 @@ jobs:
       # Fails the workflow if any files need formatting.
       - name: Check Dart formatting
         run: |
-          set -o pipefail
-          dart format --output=none --set-exit-if-changed . 2>&1 | grep '^Changed ' | sed 's/^Changed /Needs formatting: /'
+          dart format --set-exit-if-changed . 2>&1 | sed 's/^Formatted /Needs formatting: /'
 
-      # Consider passing '--fatal-infos' for slightly stricter analysis.
       - name: Analyze project source
-        run: dart analyze
-
-      # Your project will need to have tests in test/ and a dependency on
-      # package:test for this step to succeed. Note that Flutter projects will
-      # want to change this to 'flutter test'.
+        run: dart analyze --fatal-infos
+        
       - name: Run tests
         run: dart test
