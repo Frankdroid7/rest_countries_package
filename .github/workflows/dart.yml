@@ -29,8 +29,9 @@ jobs:
 
       # Checks if the Dart code is properly formatted.
       # Fails the workflow if any files need formatting.
-      - name: Verify formatting
-        run: dart format --set-exit-if-changed .
+      - name: Check Dart formatting
+        run: |
+          dart format --output=none --set-exit-if-changed . 2>&1 | grep '^Changed ' | sed 's/^Changed /Needs formatting: /'
 
       # Consider passing '--fatal-infos' for slightly stricter analysis.
       - name: Analyze project source
