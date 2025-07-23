@@ -1,7 +1,7 @@
 # rest_countries_data
 
 <p align="center">
-  <img src="assets/images/country_logo.png" alt="rest_countries_data Logo" width="200"/>
+  <img src="assets/images/country_logo.png" alt="rest_countries_data Logo" width="400", height="400"/>
 </p>
 
 ---
