@@ -20,6 +20,14 @@ class CountriesRepositoryImpl implements CountryRepository {
   Future<List<CountryModel>> getAllCountries({
     required List<CountryFields> fields,
   }) async {
+    if (fields.length > 10) {
+      throw Exception('CountryFields cannot be more than 10');
+    }
+
+    if (fields.isEmpty) {
+      throw Exception('CountryFields cannot be empty');
+    }
+
     List<Map<String, dynamic>> response =
         await countriesApi.getAllCountries(fields: fields);
 

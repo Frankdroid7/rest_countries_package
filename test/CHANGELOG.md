@@ -16,3 +16,12 @@ All notable changes to this project will be documented in this file.
   - `getCountriesByDemonym`
   - `getCountriesByIndependentStatus`
 - Includes example usage in `/example` folder.
+
+## [1.0.1] - 2025-07-23
+### Changed
+- Moved conditional logic from the service layer to the repository layer.
+- Updated tests to reflect logic change.
+
+### Added
+- Image added to README for better documentation.
+
