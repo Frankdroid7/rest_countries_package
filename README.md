@@ -1,5 +1,11 @@
 # rest_countries_data
 
+<p align="center">
+  <img src="assets/country_logo.png" alt="rest_countries_data Logo" width="200"/>
+</p>
+
+---
+
 A Dart wrapper around the [REST Countries v3.1 API](https://restcountries.com) that provides a fully-typed, developer-friendly interface for accessing detailed country data.
 
 ---

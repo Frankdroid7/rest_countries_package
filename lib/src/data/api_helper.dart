@@ -5,11 +5,12 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 
 class ApiHelper {
+  static const String baseUrl = 'https://restcountries.com/v3.1';
   Future<List<Map<String, dynamic>>> callAPI({
     required String apiUrl,
   }) async {
     try {
-      http.Response response = await http.get(Uri.parse(apiUrl));
+      http.Response response = await http.get(Uri.parse('$baseUrl$apiUrl'));
       if (response.statusCode == 200) {
         List<Map<String, dynamic>> rawData =
             List<Map<String, dynamic>>.from(jsonDecode(response.body));

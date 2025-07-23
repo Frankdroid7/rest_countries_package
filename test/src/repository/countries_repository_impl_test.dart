@@ -28,12 +28,6 @@ void main() {
     test(
       'GIVEN getAllCountries is called, WHEN fields list is more than 10, THEN throw an exception ',
       () async {
-        when(
-          () => mockCountriesApi.getAllCountries(
-            fields: List<CountryFields>.filled(11, CountryFields.name),
-          ),
-        ).thenThrow(Exception('Country fields cannot be more than 10'));
-
         expect(
           () async => await countriesRepositoryImpl.getAllCountries(
             fields: List<CountryFields>.filled(11, CountryFields.name),
@@ -43,7 +37,7 @@ void main() {
               (Object? e) =>
                   e is Exception &&
                   e.toString().contains(
-                        'Country fields cannot be more than 10',
+                        'CountryFields cannot be more than 10',
                       ),
             ),
           ),
