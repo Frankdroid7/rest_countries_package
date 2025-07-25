@@ -24,3 +24,13 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - Image added to README.
+
+## [1.0.2] - 2025-07-25
+### Added
+- `toTrim()` method for all parameters to sanitize input data.
+- `toString()` override method for `CountryModel` to improve debug readability.
+- `getCountryPhoneNumberCode` getter to the CountryModel to return country phone dialing code.
+- Unit test to verify `CountryModel.getCountryPhoneNumberCode`.
+
+### Changed
+- Renamed `getCountriesByCapital` to `getCountryByCapital` for consistency.
