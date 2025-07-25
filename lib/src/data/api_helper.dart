@@ -10,7 +10,8 @@ class ApiHelper {
     required String apiUrl,
   }) async {
     try {
-      http.Response response = await http.get(Uri.parse('$baseUrl$apiUrl'));
+      http.Response response =
+          await http.get(Uri.parse('$baseUrl${apiUrl.trim()}'));
       if (response.statusCode == 200) {
         List<Map<String, dynamic>> rawData =
             List<Map<String, dynamic>>.from(jsonDecode(response.body));
