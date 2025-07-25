@@ -80,16 +80,19 @@ void main() {
     );
 
     test(
-      "GIVEN valid fields, WHEN getCountriesByCapital is called, THEN verify that countriesApi.getCountriesByCapital is called",
+      "GIVEN valid field, WHEN getCountryByCapital is called, THEN verify that countriesApi.getCountryByCapital is called",
       () async {
         when(
-          () => mockCountriesApi.getCountriesByCapital(capital: 'Abuja'),
-        ).thenAnswer((_) =>
-            Future<List<Map<String, dynamic>>>.value(<Map<String, dynamic>>[]));
-        await countriesRepositoryImpl.getCountriesByCapital(capital: 'Abuja');
+          () => mockCountriesApi.getCountryByCapital(capital: 'Abuja'),
+        ).thenAnswer(
+          (_) => Future<List<Map<String, dynamic>>>.value(
+            <Map<String, dynamic>>[<String, dynamic>{}],
+          ),
+        );
+        await countriesRepositoryImpl.getCountryByCapital(capital: 'Abuja');
 
         verify(
-          () => mockCountriesApi.getCountriesByCapital(capital: 'Abuja'),
+          () => mockCountriesApi.getCountryByCapital(capital: 'Abuja'),
         ).called(1);
       },
     );

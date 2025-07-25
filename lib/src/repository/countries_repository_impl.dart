@@ -42,17 +42,13 @@ class CountriesRepositoryImpl implements CountryRepository {
   ///
   /// Returns a list of [CountryModel].
   @override
-  Future<List<CountryModel>> getCountriesByCapital({
+  Future<CountryModel> getCountryByCapital({
     required String capital,
   }) async {
     List<Map<String, dynamic>> response =
-        await countriesApi.getCountriesByCapital(capital: capital);
+        await countriesApi.getCountryByCapital(capital: capital);
 
-    List<CountryModel> countryModelList = response
-        .map((Map<String, dynamic> country) => CountryModel.fromJson(country))
-        .toList();
-
-    return countryModelList;
+    return CountryModel.fromJson(response.first);
   }
 
   /// Retrieves a country by its [code].

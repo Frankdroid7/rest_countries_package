@@ -76,6 +76,9 @@ class CountryModel {
     this.coatOfArms,
   });
 
+  String get getCountryPhoneNumberCode =>
+      '${idd?.root}${idd?.suffixes?.join()}';
+
   factory CountryModel.fromJson(Map<String, dynamic> json) {
     return CountryModel(
       name: json['name'] != null ? Name.fromJson(json['name']) : null,
@@ -139,6 +142,48 @@ class CountryModel {
       ),
     );
   }
+
+  @override
+  String toString() {
+    return 'CountryModel(\n'
+        '  name: $name,\n'
+        '  cca2: $cca2,\n'
+        '  cca3: $cca3,\n'
+        '  ccn3: $ccn3,\n'
+        '  cioc: $cioc,\n'
+        '  independent: $independent,\n'
+        '  status: $status,\n'
+        '  flag: $flag,\n'
+        '  unMember: $unMember,\n'
+        '  capital: $capital,\n'
+        '  region: $region,\n'
+        '  subregion: $subregion,\n'
+        '  continents: $continents,\n'
+        '  population: $population,\n'
+        '  area: $area,\n'
+        '  gini: $gini,\n'
+        '  timezones: $timezones,\n'
+        '  topLevelDomain: $topLevelDomain,\n'
+        '  latlng: $latlng,\n'
+        '  demonym: $demonym,\n'
+        '  borders: $borders,\n'
+        '  currencies: $currencies,\n'
+        '  idd: $idd,\n'
+        '  languages: $languages,\n'
+        '  translations: $translations,\n'
+        '  flags: $flags,\n'
+        '  regionalBlocs: $regionalBlocs,\n'
+        '  altSpellings: $altSpellings,\n'
+        '  capitalInfo: $capitalInfo,\n'
+        '  car: $car,\n'
+        '  coatOfArms: $coatOfArms,\n'
+        '  demonyms: $demonyms,\n'
+        '  fifa: $fifa,\n'
+        '  maps: $maps,\n'
+        '  startOfWeek: $startOfWeek,\n'
+        '  landlocked: $landlocked\n'
+        ')';
+  }
 }
 
 class Name {
@@ -159,6 +204,15 @@ class Name {
       nativeName: native,
     );
   }
+
+  @override
+  String toString() {
+    return 'Name(\n'
+        '  common: $common,\n'
+        '  official: $official,\n'
+        '  nativeName: $nativeName\n'
+        ')';
+  }
 }
 
 class Currency {
@@ -169,6 +223,14 @@ class Currency {
 
   factory Currency.fromJson(Map<String, dynamic> json) =>
       Currency(name: json['name'], symbol: json['symbol']);
+
+  @override
+  String toString() {
+    return 'Currency(\n'
+        '  name: $name,\n'
+        '  symbol: $symbol\n'
+        ')';
+  }
 }
 
 class Idd {
@@ -181,6 +243,14 @@ class Idd {
         root: json['root'],
         suffixes: (json['suffixes'] as List<dynamic>?)?.cast<String>(),
       );
+
+  @override
+  String toString() {
+    return 'Idd(\n'
+        '  root: $root,\n'
+        '  suffixes: $suffixes\n'
+        ')';
+  }
 }
 
 class Translation {
@@ -191,6 +261,14 @@ class Translation {
 
   factory Translation.fromJson(Map<String, dynamic> json) =>
       Translation(official: json['official'], common: json['common']);
+
+  @override
+  String toString() {
+    return 'Translation(\n'
+        '  official: $official,\n'
+        '  common: $common\n'
+        ')';
+  }
 }
 
 class Flags {
@@ -201,6 +279,14 @@ class Flags {
 
   factory Flags.fromJson(Map<String, dynamic> json) =>
       Flags(svg: json['svg'], png: json['png']);
+
+  @override
+  String toString() {
+    return 'Flags(\n'
+        '  svg: $svg,\n'
+        '  png: $png\n'
+        ')';
+  }
 }
 
 class RegionalBloc {
@@ -218,6 +304,16 @@ class RegionalBloc {
             (json['otherAcronyms'] as List<dynamic>?)?.cast<String>(),
         otherNames: (json['otherNames'] as List<dynamic>?)?.cast<String>(),
       );
+
+  @override
+  String toString() {
+    return 'RegionalBloc(\n'
+        '  acronym: $acronym,\n'
+        '  name: $name,\n'
+        '  otherAcronyms: $otherAcronyms,\n'
+        '  otherNames: $otherNames\n'
+        ')';
+  }
 }
 
 class CapitalInfo {
@@ -231,6 +327,13 @@ class CapitalInfo {
           ?.map((e) => (e as num).toDouble())
           .toList(),
     );
+  }
+
+  @override
+  String toString() {
+    return 'CapitalInfo(\n'
+        '  latlng: $latlng\n'
+        ')';
   }
 }
 
@@ -247,6 +350,14 @@ class Car {
       side: json['side'],
     );
   }
+
+  @override
+  String toString() {
+    return 'Car(\n'
+        '  signs: $signs,\n'
+        '  side: $side\n'
+        ')';
+  }
 }
 
 class CoatOfArms {
@@ -258,6 +369,13 @@ class CoatOfArms {
   factory CoatOfArms.fromJson(Map<String, dynamic> json) {
     return CoatOfArms(png: json['png'], svg: json['svg']);
   }
+  @override
+  String toString() {
+    return 'CoatOfArms(\n'
+        '  png: $png,\n'
+        '  svg: $svg\n'
+        ')';
+  }
 }
 
 class GenderedDemonym {
@@ -268,6 +386,13 @@ class GenderedDemonym {
 
   factory GenderedDemonym.fromJson(Map<String, dynamic> json) {
     return GenderedDemonym(f: json['f'], m: json['m']);
+  }
+  @override
+  String toString() {
+    return 'GenderedDemonym(\n'
+        '  f: $f,\n'
+        '  m: $m\n'
+        ')';
   }
 }
 
@@ -282,5 +407,13 @@ class Maps {
       googleMaps: json['googleMaps'],
       openStreetMaps: json['openStreetMaps'],
     );
+  }
+
+  @override
+  String toString() {
+    return 'Maps(\n'
+        '  googleMaps: $googleMaps,\n'
+        '  openStreetMaps: $openStreetMaps\n'
+        ')';
   }
 }

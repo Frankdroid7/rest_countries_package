@@ -16,10 +16,10 @@ class RestCountries {
     return _repo.getAllCountries(fields: fields);
   }
 
-  static Future<List<CountryModel>> getCountriesByCapital({
+  static Future<CountryModel> getCountryByCapital({
     required String capital,
   }) {
-    return _repo.getCountriesByCapital(capital: capital);
+    return _repo.getCountryByCapital(capital: capital);
   }
 
   static Future<CountryModel> getCountryByCode({
