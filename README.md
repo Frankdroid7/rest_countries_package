@@ -75,7 +75,7 @@ Also note: Whenever you specify the fields property, the properties that will be
 ### Get Countries by Capital
 
 ```dart
-final countries = await RestCountries.getCountriesByCapital(capital: 'Paris');
+final country = await RestCountries.getCountryByCapital(capital: 'Paris');
 ```
 
 ### Get a Country by ISO Code
@@ -163,27 +163,33 @@ CountryFields.languages
 
 **Note**: Maximum 10 fields per request for `getAllCountries()`
 
+### 🧩 Utility Getter
+
+#### `getCountryPhoneNumberCode`
+
+This convenience getter is available on the `CountryModel` and returns the full numeric dialing code (e.g., `+234` for the country Nigeria). It is constructed by combining `idd.root` and `idd.suffixes` in the `CountryModel`.
+
 ---
 
 ## 🔍 API Overview
 
-| Method                                   | Description                                  |
-| ---------------------------------------- | -------------------------------------------- |
-| `getAllCountries({required fields})`              | Get all countries with selected fields       |
-| `getCountriesByCapital(capital)`         | Filter by capital city                       |
-| `getCountryByCode(code)`                 | Get a single country by ISO code             |
-| `getCountriesByCodes(codes)`             | Get multiple countries by ISO codes          |
-| `getCountriesByCurrency(currency)`       | Filter by currency                           |
-| `getCountriesByDemonym(demonym)`         | Filter by demonym                            |
-| `getCountriesByLanguage(language)`       | Filter by spoken language                    |
-| `getCountriesByRegion(region)`           | Filter by region                             |
-| `getCountriesBySubRegion(subRegion)`     | Filter by subregion                          |
-| `getCountriesByTranslation(translation)` | Filter by translated country name            |
-| `getCountryByFullName(fullName)`         | Get a country by its full name               |
-| `getCountriesByName(name)`               | Filter by partial or full name               |
-| `getCountriesByIndependentStatus(...)`   | Filter by independence and optionally fields |
+| Method                                   | Description                                           |
+| ---------------------------------------- | ----------------------------------------------------- |
+| `getAllCountries({required fields})`     | Get all countries with selected fields               |
+| `getCountryByCapital({required capital})`           | Filter by capital city                               |
+| `getCountryByCode({required code})`                 | Get a single country by ISO code                     |
+| `getCountriesByCodes({required codes})`             | Get multiple countries by ISO codes                  |
+| `getCountriesByCurrency({required currency})`       | Filter by currency                                   |
+| `getCountriesByDemonym({required demonym})`         | Filter by demonym                                    |
+| `getCountriesByLanguage({required language})`       | Filter by spoken language                            |
+| `getCountriesByRegion({required region})`           | Filter by region                                     |
+| `getCountriesBySubRegion({required subRegion})`     | Filter by subregion                                  |
+| `getCountriesByTranslation({required translation})` | Filter by translated country name                    |
+| `getCountryByFullName({required fullName})`         | Get a country by its full name                       |
+| `getCountriesByName({required name})`               | Filter by partial or full name                       |
+| `getCountriesByIndependentStatus(...)`   | Filter by independence and optionally fields         |
+| `CountryModel.getCountryPhoneNumberCode`      | Get the phone dialing code of a country (e.g. `+234`) |
 
----
 
 ## 📊 Example (Run it)
 

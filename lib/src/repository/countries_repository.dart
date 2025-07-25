@@ -20,7 +20,7 @@ abstract class CountryRepository {
 
   Future<List<CountryModel>> getCountriesByLanguage({required String language});
 
-  Future<List<CountryModel>> getCountriesByCapital({required String capital});
+  Future<CountryModel> getCountryByCapital({required String capital});
 
   Future<List<CountryModel>> getCountriesByRegion({required String region});
 

@@ -16,7 +16,7 @@ class CountriesApi {
     );
   }
 
-  Future<List<Map<String, dynamic>>> getCountriesByCapital({
+  Future<List<Map<String, dynamic>>> getCountryByCapital({
     required String capital,
   }) async {
     return await apiHelper.callAPI(apiUrl: '/capital/$capital');
