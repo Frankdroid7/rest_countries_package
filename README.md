@@ -213,6 +213,20 @@ Pull requests are welcome! If you have ideas or find bugs, feel free to open an 
 
 ---
 
+### Development Setup
+
+After cloning the repository, install the git hooks for automatic formatting and linting:
+
+```bash
+./install-hooks.sh
+```
+
+This will set up a pre-commit hook that:
+- Automatically formats all Dart files
+- Runs dart analyze to check for issues
+- Prevents commits if there are analysis errors
+
+
 ## 👋 Author
 
 Maintained by [Franklin Oladipo](https://github.com/frankdroid7)
