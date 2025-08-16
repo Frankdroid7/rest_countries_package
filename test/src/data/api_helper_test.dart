@@ -80,6 +80,21 @@ void main() {
         expect(result, isA<List<Map<String, dynamic>>>());
       },
     );
+
+    test(
+      'GIVEN country code endpoint, WHEN callAPI is called with valid code, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url = 'https://restcountries.com/v3.1/alpha/ng';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(nigeriaData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
   });
 }
 
