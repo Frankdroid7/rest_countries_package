@@ -65,8 +65,35 @@ void main() {
         );
       },
     );
+
+    test(
+      'GIVEN country name endpoint, WHEN callAPI is called with valid name, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url = 'https://restcountries.com/v3.1/name/nigeria';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(nigeriaData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
   });
 }
+
+String nigeriaData = """[
+  {
+    "name": {
+      "common": "Nigeria",
+      "official": "Federal Republic of Nigeria",
+      "nativeName": {
+        "eng": {"official": "Federal Republic of Nigeria", "common": "Nigeria"}
+      }
+    }
+  }
+]""";
 
 String mockData = """[
   {
