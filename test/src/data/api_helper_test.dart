@@ -155,6 +155,22 @@ void main() {
         expect(result, isA<List<Map<String, dynamic>>>());
       },
     );
+
+    test(
+      'GIVEN subregion endpoint, WHEN callAPI is called with valid subregion, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url =
+            'https://restcountries.com/v3.1/subregion/western%20africa';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(mockData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
   });
 }
 
