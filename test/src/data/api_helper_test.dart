@@ -110,6 +110,21 @@ void main() {
         expect(result, isA<List<Map<String, dynamic>>>());
       },
     );
+
+    test(
+      'GIVEN language endpoint, WHEN callAPI is called with valid language, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url = 'https://restcountries.com/v3.1/lang/french';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(mockData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
   });
 }
 
