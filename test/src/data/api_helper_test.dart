@@ -201,6 +201,25 @@ void main() {
         expect(result, isA<List<Map<String, dynamic>>>());
       },
     );
+
+    test(
+      'GIVEN invalid country name, WHEN callAPI is called, THEN throw a country not found exception',
+      () async {
+        final String url = 'https://restcountries.com/v3.1/name/invalidcountry';
+        when(() => mockApiHelper.callAPI(apiUrl: url))
+            .thenThrow(Exception('Country not found'));
+
+        expect(
+          () => mockApiHelper.callAPI(apiUrl: url),
+          throwsA(
+            predicate(
+              (Object? e) =>
+                  e is Exception && e.toString().contains('Country not found'),
+            ),
+          ),
+        );
+      },
+    );
   });
 }
 
