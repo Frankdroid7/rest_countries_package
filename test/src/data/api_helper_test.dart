@@ -299,6 +299,46 @@ void main() {
         expect(result, isA<List<Map<String, dynamic>>>());
       },
     );
+
+    test(
+      'GIVEN invalid currency code, WHEN callAPI is called, THEN throw an exception',
+      () async {
+        final String url =
+            'https://restcountries.com/v3.1/currency/invalidcurrency';
+        when(() => mockApiHelper.callAPI(apiUrl: url))
+            .thenThrow(Exception('Currency not found'));
+
+        expect(
+          () => mockApiHelper.callAPI(apiUrl: url),
+          throwsA(
+            predicate(
+              (Object? e) =>
+                  e is Exception && e.toString().contains('Currency not found'),
+            ),
+          ),
+        );
+      },
+    );
+
+    test(
+      'GIVEN invalid alpha code, WHEN callAPI is called, THEN throw an exception',
+      () async {
+        final String url = 'https://restcountries.com/v3.1/alpha/xyz';
+        when(() => mockApiHelper.callAPI(apiUrl: url))
+            .thenThrow(Exception('Invalid country code'));
+
+        expect(
+          () => mockApiHelper.callAPI(apiUrl: url),
+          throwsA(
+            predicate(
+              (Object? e) =>
+                  e is Exception &&
+                  e.toString().contains('Invalid country code'),
+            ),
+          ),
+        );
+      },
+    );
   });
 }
 
