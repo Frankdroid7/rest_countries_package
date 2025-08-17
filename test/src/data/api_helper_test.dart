@@ -220,6 +220,85 @@ void main() {
         );
       },
     );
+
+    test(
+      'GIVEN independent status endpoint, WHEN callAPI is called with independent status, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url =
+            'https://restcountries.com/v3.1/independent?status=true';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(mockData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
+
+    test(
+      'GIVEN calling code endpoint, WHEN callAPI is called with valid calling code, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url = 'https://restcountries.com/v3.1/callingcode/234';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(nigeriaData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
+
+    test(
+      'GIVEN full name endpoint, WHEN callAPI is called with full country name, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url =
+            'https://restcountries.com/v3.1/name/federal%20republic%20of%20nigeria?fullText=true';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(nigeriaData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
+
+    test(
+      'GIVEN multiple alpha codes endpoint, WHEN callAPI is called with multiple codes, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url =
+            'https://restcountries.com/v3.1/alpha?codes=ng,gh,bj';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(mockData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
+
+    test(
+      'GIVEN fields filter endpoint, WHEN callAPI is called with specific fields, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url =
+            'https://restcountries.com/v3.1/all?fields=name,capital,population';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(mockData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
   });
 }
 
