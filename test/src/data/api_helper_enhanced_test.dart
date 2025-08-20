@@ -8,19 +8,8 @@ class MockHttpClient extends Mock implements http.Client {}
 
 void main() {
   group('ApiHelper Tests', () {
-    late ApiHelper apiHelper;
-
-    setUp(() {
-      apiHelper = ApiHelper();
-    });
-
     group('Successful API calls', () {
       test('callAPI returns list of maps when status code is 200', () async {
-        final mockData = [
-          {'name': 'Nigeria', 'capital': 'Abuja'},
-          {'name': 'Ghana', 'capital': 'Accra'}
-        ];
-
         // Note: This is an integration-style test since ApiHelper creates its own http client
         // For true unit testing, ApiHelper would need to accept an injected http client
       });
