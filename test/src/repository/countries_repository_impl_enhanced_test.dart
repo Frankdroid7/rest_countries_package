@@ -63,7 +63,8 @@ void main() {
             ),
           );
 
-          final result = await countriesRepositoryImpl.getAllCountries(
+          final List<CountryModel> result =
+              await countriesRepositoryImpl.getAllCountries(
             fields: List<CountryFields>.filled(10, CountryFields.name),
           );
 
@@ -93,7 +94,8 @@ void main() {
             ),
           );
 
-          final result = await countriesRepositoryImpl.getAllCountries(
+          final List<CountryModel> result =
+              await countriesRepositoryImpl.getAllCountries(
             fields: <CountryFields>[CountryFields.name],
           );
 
@@ -115,8 +117,8 @@ void main() {
             (_) => Future<List<Map<String, dynamic>>>.value(jsonData),
           );
 
-          final result = await countriesRepositoryImpl.getCountriesByDemonym(
-              demonym: 'American');
+          final List<CountryModel> result = await countriesRepositoryImpl
+              .getCountriesByDemonym(demonym: 'American');
 
           expect(result, isA<List<CountryModel>>());
           verify(() =>
@@ -135,8 +137,8 @@ void main() {
                 <Map<String, dynamic>>[]),
           );
 
-          final result = await countriesRepositoryImpl.getCountriesByDemonym(
-              demonym: 'NonExistent');
+          final List<CountryModel> result = await countriesRepositoryImpl
+              .getCountriesByDemonym(demonym: 'NonExistent');
 
           expect(result, isEmpty);
         },
@@ -153,8 +155,8 @@ void main() {
             (_) => Future<List<Map<String, dynamic>>>.value(jsonData),
           );
 
-          final result = await countriesRepositoryImpl.getCountriesByLanguage(
-              language: 'eng');
+          final List<CountryModel> result = await countriesRepositoryImpl
+              .getCountriesByLanguage(language: 'eng');
 
           expect(result, isA<List<CountryModel>>());
           verify(() => mockCountriesApi.getCountryByLanguage(language: 'eng'))
@@ -180,8 +182,8 @@ void main() {
             ),
           );
 
-          final result = await countriesRepositoryImpl.getCountriesByLanguage(
-              language: 'spa');
+          final List<CountryModel> result = await countriesRepositoryImpl
+              .getCountriesByLanguage(language: 'spa');
 
           expect(result.length, equals(2));
         },
@@ -198,8 +200,8 @@ void main() {
             (_) => Future<List<Map<String, dynamic>>>.value(jsonData),
           );
 
-          final result = await countriesRepositoryImpl.getCountriesByRegion(
-              region: 'Africa');
+          final List<CountryModel> result = await countriesRepositoryImpl
+              .getCountriesByRegion(region: 'Africa');
 
           expect(result, isA<List<CountryModel>>());
           verify(() => mockCountriesApi.getCountryByRegion(region: 'Africa'))
@@ -216,15 +218,15 @@ void main() {
             (_) => Future<List<Map<String, dynamic>>>.value(
               List.generate(
                 10,
-                (i) => <String, dynamic>{
+                (int i) => <String, dynamic>{
                   'name': <String, Object>{'common': 'Country $i'}
                 },
               ),
             ),
           );
 
-          final result = await countriesRepositoryImpl.getCountriesByRegion(
-              region: 'Europe');
+          final List<CountryModel> result = await countriesRepositoryImpl
+              .getCountriesByRegion(region: 'Europe');
 
           expect(result.length, equals(10));
         },
@@ -242,8 +244,8 @@ void main() {
             (_) => Future<List<Map<String, dynamic>>>.value(jsonData),
           );
 
-          final result = await countriesRepositoryImpl.getCountriesBySubRegion(
-              subRegion: 'Western Africa');
+          final List<CountryModel> result = await countriesRepositoryImpl
+              .getCountriesBySubRegion(subRegion: 'Western Africa');
 
           expect(result, isA<List<CountryModel>>());
           verify(() => mockCountriesApi.getCountryBySubRegion(
@@ -263,7 +265,7 @@ void main() {
             (_) => Future<List<Map<String, dynamic>>>.value(jsonData),
           );
 
-          final result = await countriesRepositoryImpl
+          final List<CountryModel> result = await countriesRepositoryImpl
               .getCountriesByTranslation(translation: 'Deutschland');
 
           expect(result, isA<List<CountryModel>>());
@@ -284,8 +286,8 @@ void main() {
             (_) => Future<List<Map<String, dynamic>>>.value(jsonData),
           );
 
-          final result = await countriesRepositoryImpl.getCountryByFullName(
-              fullName: 'Federal Republic of Nigeria');
+          final CountryModel result = await countriesRepositoryImpl
+              .getCountryByFullName(fullName: 'Federal Republic of Nigeria');
 
           expect(result, isA<CountryModel>());
           verify(() => mockCountriesApi.getCountryByFullName(
@@ -309,8 +311,8 @@ void main() {
             ),
           );
 
-          final result = await countriesRepositoryImpl.getCountryByFullName(
-              fullName: 'United Kingdom');
+          final CountryModel result = await countriesRepositoryImpl
+              .getCountryByFullName(fullName: 'United Kingdom');
 
           expect(result.name?.common, equals('UK'));
         },
@@ -327,7 +329,7 @@ void main() {
             (_) => Future<List<Map<String, dynamic>>>.value(jsonData),
           );
 
-          final result =
+          final List<CountryModel> result =
               await countriesRepositoryImpl.getCountriesByName(name: 'United');
 
           expect(result, isA<List<CountryModel>>());
@@ -357,7 +359,7 @@ void main() {
             ),
           );
 
-          final result =
+          final List<CountryModel> result =
               await countriesRepositoryImpl.getCountriesByName(name: 'United');
 
           expect(result.length, equals(3));
@@ -378,7 +380,7 @@ void main() {
             (_) => Future<List<Map<String, dynamic>>>.value(jsonData),
           );
 
-          final result =
+          final List<CountryModel> result =
               await countriesRepositoryImpl.getCountriesByIndependentStatus(
             independent: true,
             fields: <CountryFields>[],
@@ -409,7 +411,7 @@ void main() {
             ),
           );
 
-          final result =
+          final List<CountryModel> result =
               await countriesRepositoryImpl.getCountriesByIndependentStatus(
             independent: false,
             fields: <CountryFields>[],
@@ -480,14 +482,14 @@ void main() {
               <Map<String, dynamic>>[
                 <String, dynamic>{
                   'name': <String, Object>{'common': 'United Kingdom'},
-                  'capital': ['London']
+                  'capital': <String>['London']
                 },
               ],
             ),
           );
 
-          final result = await countriesRepositoryImpl.getCountryByCapital(
-              capital: 'London');
+          final CountryModel result = await countriesRepositoryImpl
+              .getCountryByCapital(capital: 'London');
 
           expect(result, isA<CountryModel>());
           expect(result.name?.common, equals('United Kingdom'));
@@ -512,7 +514,7 @@ void main() {
             ),
           );
 
-          final result =
+          final CountryModel result =
               await countriesRepositoryImpl.getCountryByCode(code: 'US');
 
           expect(result, isA<CountryModel>());
@@ -537,7 +539,7 @@ void main() {
             ),
           );
 
-          final result = await countriesRepositoryImpl
+          final List<CountryModel> result = await countriesRepositoryImpl
               .getCountriesByCodes(codes: <String>['NG']);
 
           expect(result.length, equals(1));
@@ -567,7 +569,7 @@ void main() {
             ),
           );
 
-          final result = await countriesRepositoryImpl
+          final List<CountryModel> result = await countriesRepositoryImpl
               .getCountriesByCodes(codes: <String>['US', 'CA', 'MX']);
 
           expect(result.length, equals(3));
@@ -594,8 +596,8 @@ void main() {
             ),
           );
 
-          final result = await countriesRepositoryImpl.getCountriesByCurrency(
-              currency: 'EUR');
+          final List<CountryModel> result = await countriesRepositoryImpl
+              .getCountriesByCurrency(currency: 'EUR');
 
           expect(result.length, equals(2));
           expect(result, isA<List<CountryModel>>());

@@ -5,12 +5,12 @@ void main() {
   group('CountryModel Tests', () {
     group('fromJson factory constructor', () {
       test('creates CountryModel from complete JSON', () {
-        final json = {
-          'name': {
+        final Map<String, Object> json = <String, Object>{
+          'name': <String, Object>{
             'common': 'Nigeria',
             'official': 'Federal Republic of Nigeria',
-            'nativeName': {
-              'eng': {
+            'nativeName': <String, Map<String, String>>{
+              'eng': <String, String>{
                 'official': 'Federal Republic of Nigeria',
                 'common': 'Nigeria'
               }
@@ -23,33 +23,33 @@ void main() {
           'independent': true,
           'status': 'officially-assigned',
           'unMember': true,
-          'capital': ['Abuja'],
+          'capital': <String>['Abuja'],
           'region': 'Africa',
           'subregion': 'Western Africa',
-          'continents': ['Africa'],
+          'continents': <String>['Africa'],
           'population': 206139587,
           'area': 923768.0,
-          'gini': {'2018': 35.1},
-          'timezones': ['UTC+01:00'],
-          'tld': ['.ng'],
-          'latlng': [10.0, 8.0],
+          'gini': <String, double>{'2018': 35.1},
+          'timezones': <String>['UTC+01:00'],
+          'tld': <String>['.ng'],
+          'latlng': <double>[10.0, 8.0],
           'demonym': 'Nigerian',
-          'borders': ['BEN', 'CMR', 'TCD', 'NER'],
-          'currencies': {
-            'NGN': {'name': 'Nigerian naira', 'symbol': '₦'}
+          'borders': <String>['BEN', 'CMR', 'TCD', 'NER'],
+          'currencies': <String, Map<String, String>>{
+            'NGN': <String, String>{'name': 'Nigerian naira', 'symbol': '₦'}
           },
-          'idd': {
+          'idd': <String, Object>{
             'root': '+2',
-            'suffixes': ['34']
+            'suffixes': <String>['34']
           },
-          'languages': {'eng': 'English'},
-          'translations': {
-            'fra': {
+          'languages': <String, String>{'eng': 'English'},
+          'translations': <String, Map<String, String>>{
+            'fra': <String, String>{
               'official': 'République fédérale du Nigeria',
               'common': 'Nigeria'
             }
           },
-          'flags': {
+          'flags': <String, String>{
             'svg': 'https://flagcdn.com/ng.svg',
             'png': 'https://flagcdn.com/w320/ng.png'
           },
@@ -57,27 +57,27 @@ void main() {
           'landlocked': false,
           'flag': '🇳🇬',
           'startOfWeek': 'monday',
-          'capitalInfo': {
-            'latlng': [9.08, 7.53]
+          'capitalInfo': <String, List<double>>{
+            'latlng': <double>[9.08, 7.53]
           },
-          'car': {
-            'signs': ['WAN'],
+          'car': <String, Object>{
+            'signs': <String>['WAN'],
             'side': 'right'
           },
-          'coatOfArms': {
+          'coatOfArms': <String, String>{
             'png': 'https://mainfacts.com/media/images/coats_of_arms/ng.png',
             'svg': 'https://mainfacts.com/media/images/coats_of_arms/ng.svg'
           },
-          'maps': {
+          'maps': <String, String>{
             'googleMaps': 'https://goo.gl/maps/LTn417qWwBPFszuV9',
             'openStreetMaps': 'https://www.openstreetmap.org/relation/192787'
           },
-          'demonyms': {
-            'eng': {'f': 'Nigerian', 'm': 'Nigerian'}
+          'demonyms': <String, Map<String, String>>{
+            'eng': <String, String>{'f': 'Nigerian', 'm': 'Nigerian'}
           }
         };
 
-        final country = CountryModel.fromJson(json);
+        final CountryModel country = CountryModel.fromJson(json);
 
         expect(country.name?.common, equals('Nigeria'));
         expect(country.cca2, equals('NG'));
@@ -87,7 +87,7 @@ void main() {
         expect(country.independent, isTrue);
         expect(country.status, equals('officially-assigned'));
         expect(country.unMember, isTrue);
-        expect(country.capital, equals(['Abuja']));
+        expect(country.capital, equals(<String>['Abuja']));
         expect(country.region, equals('Africa'));
         expect(country.subregion, equals('Western Africa'));
         expect(country.population, equals(206139587));
@@ -99,11 +99,11 @@ void main() {
       });
 
       test('creates CountryModel with null fields when JSON is incomplete', () {
-        final json = {
-          'name': {'common': 'Test Country'}
+        final Map<String, Object> json = <String, Object>{
+          'name': <String, String>{'common': 'Test Country'}
         };
 
-        final country = CountryModel.fromJson(json);
+        final CountryModel country = CountryModel.fromJson(json);
 
         expect(country.name?.common, equals('Test Country'));
         expect(country.cca2, isNull);
@@ -113,37 +113,37 @@ void main() {
       });
 
       test('handles area as integer and converts to double', () {
-        final json = {
-          'name': {'common': 'Test'},
+        final Map<String, Object> json = <String, Object>{
+          'name': <String, String>{'common': 'Test'},
           'area': 100
         };
 
-        final country = CountryModel.fromJson(json);
+        final CountryModel country = CountryModel.fromJson(json);
 
         expect(country.area, equals(100.0));
         expect(country.area, isA<double>());
       });
 
       test('handles area as double', () {
-        final json = {
-          'name': {'common': 'Test'},
+        final Map<String, Object> json = <String, Object>{
+          'name': <String, String>{'common': 'Test'},
           'area': 100.5
         };
 
-        final country = CountryModel.fromJson(json);
+        final CountryModel country = CountryModel.fromJson(json);
 
         expect(country.area, equals(100.5));
       });
 
       test('handles empty lists correctly', () {
-        final json = {
-          'name': {'common': 'Test'},
-          'capital': [],
-          'borders': [],
-          'timezones': []
+        final Map<String, Object> json = <String, Object>{
+          'name': <String, String>{'common': 'Test'},
+          'capital': <String>[],
+          'borders': <String>[],
+          'timezones': <String>[]
         };
 
-        final country = CountryModel.fromJson(json);
+        final CountryModel country = CountryModel.fromJson(json);
 
         expect(country.capital, isEmpty);
         expect(country.borders, isEmpty);
@@ -153,23 +153,23 @@ void main() {
 
     group('getCountryPhoneNumberCode getter', () {
       test('returns concatenated phone code with root and suffixes', () {
-        final country = CountryModel(
-          idd: Idd(root: '+2', suffixes: ['34']),
+        final CountryModel country = CountryModel(
+          idd: Idd(root: '+2', suffixes: <String>['34']),
         );
 
         expect(country.getCountryPhoneNumberCode, equals('+234'));
       });
 
       test('returns concatenated code with multiple suffixes', () {
-        final country = CountryModel(
-          idd: Idd(root: '+1', suffixes: ['242', '246']),
+        final CountryModel country = CountryModel(
+          idd: Idd(root: '+1', suffixes: <String>['242', '246']),
         );
 
         expect(country.getCountryPhoneNumberCode, equals('+1242246'));
       });
 
       test('handles null suffixes', () {
-        final country = CountryModel(
+        final CountryModel country = CountryModel(
           idd: Idd(root: '+44', suffixes: null),
         );
 
@@ -177,15 +177,15 @@ void main() {
       });
 
       test('handles null root', () {
-        final country = CountryModel(
-          idd: Idd(root: null, suffixes: ['123']),
+        final CountryModel country = CountryModel(
+          idd: Idd(root: null, suffixes: <String>['123']),
         );
 
         expect(country.getCountryPhoneNumberCode, equals('null123'));
       });
 
       test('handles null idd', () {
-        final country = CountryModel(idd: null);
+        final CountryModel country = CountryModel(idd: null);
 
         expect(country.getCountryPhoneNumberCode, equals('nullnull'));
       });
@@ -193,36 +193,34 @@ void main() {
 
     group('toString method', () {
       test('returns formatted string representation', () {
-        final country = CountryModel(
+        final String country = CountryModel(
           name: Name(common: 'Nigeria'),
           cca2: 'NG',
           population: 206139587,
-        );
+        ).toString();
 
-        final result = country.toString();
-
-        expect(result, contains('CountryModel'));
-        expect(result, contains('name:'));
-        expect(result, contains('cca2: NG'));
-        expect(result, contains('population: 206139587'));
+        expect(country, contains('CountryModel'));
+        expect(country, contains('name:'));
+        expect(country, contains('cca2: NG'));
+        expect(country, contains('population: 206139587'));
       });
     });
   });
 
   group('Name Model Tests', () {
     test('fromJson creates Name with all fields', () {
-      final json = {
+      final Map<String, Object> json = <String, Object>{
         'common': 'Nigeria',
         'official': 'Federal Republic of Nigeria',
-        'nativeName': {
-          'eng': {
+        'nativeName': <String, Object>{
+          'eng': <String, String>{
             'official': 'Federal Republic of Nigeria',
             'common': 'Nigeria'
           }
         }
       };
 
-      final name = Name.fromJson(json);
+      final Name name = Name.fromJson(json);
 
       expect(name.common, equals('Nigeria'));
       expect(name.official, equals('Federal Republic of Nigeria'));
@@ -231,8 +229,8 @@ void main() {
     });
 
     test('toString returns formatted string', () {
-      final name = Name(common: 'Test', official: 'Test Official');
-      final result = name.toString();
+      final Name name = Name(common: 'Test', official: 'Test Official');
+      final String result = name.toString();
 
       expect(result, contains('Name'));
       expect(result, contains('common: Test'));
@@ -242,17 +240,20 @@ void main() {
 
   group('Currency Model Tests', () {
     test('fromJson creates Currency with name and symbol', () {
-      final json = {'name': 'Nigerian naira', 'symbol': '₦'};
+      final Map<String, String> json = <String, String>{
+        'name': 'Nigerian naira',
+        'symbol': '₦'
+      };
 
-      final currency = Currency.fromJson(json);
+      final Currency currency = Currency.fromJson(json);
 
       expect(currency.name, equals('Nigerian naira'));
       expect(currency.symbol, equals('₦'));
     });
 
     test('toString returns formatted string', () {
-      final currency = Currency(name: 'US Dollar', symbol: '\$');
-      final result = currency.toString();
+      final Currency currency = Currency(name: 'US Dollar', symbol: '\$');
+      final String result = currency.toString();
 
       expect(result, contains('Currency'));
       expect(result, contains('name: US Dollar'));
@@ -262,20 +263,20 @@ void main() {
 
   group('Idd Model Tests', () {
     test('fromJson creates Idd with root and suffixes', () {
-      final json = {
+      final Map<String, Object> json = <String, Object>{
         'root': '+2',
-        'suffixes': ['34', '35']
+        'suffixes': <String>['34', '35']
       };
 
-      final idd = Idd.fromJson(json);
+      final Idd idd = Idd.fromJson(json);
 
       expect(idd.root, equals('+2'));
-      expect(idd.suffixes, equals(['34', '35']));
+      expect(idd.suffixes, equals(<String>['34', '35']));
     });
 
     test('toString returns formatted string', () {
-      final idd = Idd(root: '+1', suffixes: ['123']);
-      final result = idd.toString();
+      final Idd idd = Idd(root: '+1', suffixes: <String>['123']);
+      final String result = idd.toString();
 
       expect(result, contains('Idd'));
       expect(result, contains('root: +1'));
@@ -285,17 +286,21 @@ void main() {
 
   group('Translation Model Tests', () {
     test('fromJson creates Translation', () {
-      final json = {'official': 'Official Name', 'common': 'Common Name'};
+      final Map<String, String> json = <String, String>{
+        'official': 'Official Name',
+        'common': 'Common Name'
+      };
 
-      final translation = Translation.fromJson(json);
+      final Translation translation = Translation.fromJson(json);
 
       expect(translation.official, equals('Official Name'));
       expect(translation.common, equals('Common Name'));
     });
 
     test('toString returns formatted string', () {
-      final translation = Translation(official: 'Off', common: 'Com');
-      final result = translation.toString();
+      final Translation translation =
+          Translation(official: 'Off', common: 'Com');
+      final String result = translation.toString();
 
       expect(result, contains('Translation'));
     });
@@ -303,17 +308,20 @@ void main() {
 
   group('Flags Model Tests', () {
     test('fromJson creates Flags with svg and png', () {
-      final json = {'svg': 'flag.svg', 'png': 'flag.png'};
+      final Map<String, String> json = <String, String>{
+        'svg': 'flag.svg',
+        'png': 'flag.png'
+      };
 
-      final flags = Flags.fromJson(json);
+      final Flags flags = Flags.fromJson(json);
 
       expect(flags.svg, equals('flag.svg'));
       expect(flags.png, equals('flag.png'));
     });
 
     test('toString returns formatted string', () {
-      final flags = Flags(svg: 'test.svg', png: 'test.png');
-      final result = flags.toString();
+      final Flags flags = Flags(svg: 'test.svg', png: 'test.png');
+      final String result = flags.toString();
 
       expect(result, contains('Flags'));
       expect(result, contains('svg:'));
@@ -323,24 +331,25 @@ void main() {
 
   group('RegionalBloc Model Tests', () {
     test('fromJson creates RegionalBloc with all fields', () {
-      final json = {
+      final Map<String, Object> json = <String, Object>{
         'acronym': 'EU',
         'name': 'European Union',
-        'otherAcronyms': ['EEC'],
-        'otherNames': ['European Economic Community']
+        'otherAcronyms': <String>['EEC'],
+        'otherNames': <String>['European Economic Community']
       };
 
-      final bloc = RegionalBloc.fromJson(json);
+      final RegionalBloc bloc = RegionalBloc.fromJson(json);
 
       expect(bloc.acronym, equals('EU'));
       expect(bloc.name, equals('European Union'));
-      expect(bloc.otherAcronyms, equals(['EEC']));
-      expect(bloc.otherNames, equals(['European Economic Community']));
+      expect(bloc.otherAcronyms, equals(<String>['EEC']));
+      expect(bloc.otherNames, equals(<String>['European Economic Community']));
     });
 
     test('toString returns formatted string', () {
-      final bloc = RegionalBloc(acronym: 'AU', name: 'African Union');
-      final result = bloc.toString();
+      final RegionalBloc bloc =
+          RegionalBloc(acronym: 'AU', name: 'African Union');
+      final String result = bloc.toString();
 
       expect(result, contains('RegionalBloc'));
       expect(result, contains('acronym: AU'));
@@ -349,28 +358,28 @@ void main() {
 
   group('CapitalInfo Model Tests', () {
     test('fromJson creates CapitalInfo with latlng', () {
-      final json = {
-        'latlng': [9.08, 7.53]
+      final Map<String, List<double>> json = <String, List<double>>{
+        'latlng': <double>[9.08, 7.53]
       };
 
-      final capitalInfo = CapitalInfo.fromJson(json);
+      final CapitalInfo capitalInfo = CapitalInfo.fromJson(json);
 
-      expect(capitalInfo.latlng, equals([9.08, 7.53]));
+      expect(capitalInfo.latlng, equals(<double>[9.08, 7.53]));
     });
 
     test('handles integer values in latlng', () {
-      final json = {
-        'latlng': [9, 7]
+      final Map<String, List<int>> json = <String, List<int>>{
+        'latlng': <int>[9, 7]
       };
 
-      final capitalInfo = CapitalInfo.fromJson(json);
+      final CapitalInfo capitalInfo = CapitalInfo.fromJson(json);
 
-      expect(capitalInfo.latlng, equals([9.0, 7.0]));
+      expect(capitalInfo.latlng, equals(<double>[9.0, 7.0]));
     });
 
     test('toString returns formatted string', () {
-      final capitalInfo = CapitalInfo(latlng: [1.0, 2.0]);
-      final result = capitalInfo.toString();
+      final CapitalInfo capitalInfo = CapitalInfo(latlng: <double>[1.0, 2.0]);
+      final String result = capitalInfo.toString();
 
       expect(result, contains('CapitalInfo'));
       expect(result, contains('latlng:'));
@@ -379,20 +388,20 @@ void main() {
 
   group('Car Model Tests', () {
     test('fromJson creates Car with signs and side', () {
-      final json = {
-        'signs': ['WAN'],
+      final Map<String, Object> json = <String, Object>{
+        'signs': <String>['WAN'],
         'side': 'right'
       };
 
-      final car = Car.fromJson(json);
+      final Car car = Car.fromJson(json);
 
-      expect(car.signs, equals(['WAN']));
+      expect(car.signs, equals(<String>['WAN']));
       expect(car.side, equals('right'));
     });
 
     test('toString returns formatted string', () {
-      final car = Car(signs: ['USA'], side: 'right');
-      final result = car.toString();
+      final Car car = Car(signs: <String>['USA'], side: 'right');
+      final String result = car.toString();
 
       expect(result, contains('Car'));
       expect(result, contains('signs:'));
@@ -402,17 +411,21 @@ void main() {
 
   group('CoatOfArms Model Tests', () {
     test('fromJson creates CoatOfArms', () {
-      final json = {'png': 'coat.png', 'svg': 'coat.svg'};
+      final Map<String, String> json = <String, String>{
+        'png': 'coat.png',
+        'svg': 'coat.svg'
+      };
 
-      final coatOfArms = CoatOfArms.fromJson(json);
+      final CoatOfArms coatOfArms = CoatOfArms.fromJson(json);
 
       expect(coatOfArms.png, equals('coat.png'));
       expect(coatOfArms.svg, equals('coat.svg'));
     });
 
     test('toString returns formatted string', () {
-      final coatOfArms = CoatOfArms(png: 'test.png', svg: 'test.svg');
-      final result = coatOfArms.toString();
+      final CoatOfArms coatOfArms =
+          CoatOfArms(png: 'test.png', svg: 'test.svg');
+      final String result = coatOfArms.toString();
 
       expect(result, contains('CoatOfArms'));
     });
@@ -420,17 +433,21 @@ void main() {
 
   group('GenderedDemonym Model Tests', () {
     test('fromJson creates GenderedDemonym', () {
-      final json = {'f': 'Nigerian', 'm': 'Nigerian'};
+      final Map<String, String> json = <String, String>{
+        'f': 'Nigerian',
+        'm': 'Nigerian'
+      };
 
-      final demonym = GenderedDemonym.fromJson(json);
+      final GenderedDemonym demonym = GenderedDemonym.fromJson(json);
 
       expect(demonym.f, equals('Nigerian'));
       expect(demonym.m, equals('Nigerian'));
     });
 
     test('toString returns formatted string', () {
-      final demonym = GenderedDemonym(f: 'American', m: 'American');
-      final result = demonym.toString();
+      final GenderedDemonym demonym =
+          GenderedDemonym(f: 'American', m: 'American');
+      final String result = demonym.toString();
 
       expect(result, contains('GenderedDemonym'));
       expect(result, contains('f:'));
@@ -440,20 +457,20 @@ void main() {
 
   group('Maps Model Tests', () {
     test('fromJson creates Maps with googleMaps and openStreetMaps', () {
-      final json = {
+      final Map<String, String> json = <String, String>{
         'googleMaps': 'https://goo.gl/maps/test',
         'openStreetMaps': 'https://www.openstreetmap.org/test'
       };
 
-      final maps = Maps.fromJson(json);
+      final Maps maps = Maps.fromJson(json);
 
       expect(maps.googleMaps, equals('https://goo.gl/maps/test'));
       expect(maps.openStreetMaps, equals('https://www.openstreetmap.org/test'));
     });
 
     test('toString returns formatted string', () {
-      final maps = Maps(googleMaps: 'google', openStreetMaps: 'osm');
-      final result = maps.toString();
+      final Maps maps = Maps(googleMaps: 'google', openStreetMaps: 'osm');
+      final String result = maps.toString();
 
       expect(result, contains('Maps'));
       expect(result, contains('googleMaps:'));

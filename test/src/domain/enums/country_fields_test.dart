@@ -151,20 +151,20 @@ void main() {
 
     group('buildCountryQueryFields function tests', () {
       test('empty list returns empty string', () {
-        final result =
+        final String result =
             buildCountryQueryFields(countryFields: <CountryFields>[]);
         expect(result, equals(''));
       });
 
       test('single field returns single value', () {
-        final result = buildCountryQueryFields(
+        final String result = buildCountryQueryFields(
           countryFields: <CountryFields>[CountryFields.name],
         );
         expect(result, equals('name'));
       });
 
       test('multiple fields returns comma-separated values', () {
-        final result = buildCountryQueryFields(
+        final String result = buildCountryQueryFields(
           countryFields: <CountryFields>[
             CountryFields.name,
             CountryFields.capital,
@@ -175,7 +175,7 @@ void main() {
       });
 
       test('fields with different api values are correctly mapped', () {
-        final result = buildCountryQueryFields(
+        final String result = buildCountryQueryFields(
           countryFields: <CountryFields>[
             CountryFields.topLevelDomain,
             CountryFields.cca2,
@@ -185,7 +185,7 @@ void main() {
       });
 
       test('large list of fields returns correctly formatted string', () {
-        final result = buildCountryQueryFields(
+        final String result = buildCountryQueryFields(
           countryFields: <CountryFields>[
             CountryFields.name,
             CountryFields.capital,
@@ -207,7 +207,7 @@ void main() {
       });
 
       test('duplicate fields are preserved in output', () {
-        final result = buildCountryQueryFields(
+        final String result = buildCountryQueryFields(
           countryFields: <CountryFields>[
             CountryFields.name,
             CountryFields.name,
@@ -218,8 +218,8 @@ void main() {
       });
 
       test('all enum values can be converted', () {
-        final allFields = CountryFields.values;
-        final result = buildCountryQueryFields(countryFields: allFields);
+        final List<CountryFields> allFields = CountryFields.values;
+        final String result = buildCountryQueryFields(countryFields: allFields);
 
         // Verify no exceptions and result is not empty
         expect(result.isNotEmpty, isTrue);

@@ -70,8 +70,9 @@ void main() {
 
     group('Response parsing', () {
       test('callAPI parses JSON response into List<Map<String, dynamic>>', () {
-        final jsonString = '[{"name":"Test"}]';
-        final parsed = List<Map<String, dynamic>>.from(jsonDecode(jsonString));
+        final String jsonString = '[{"name":"Test"}]';
+        final List<Map<String, dynamic>> parsed =
+            List<Map<String, dynamic>>.from(jsonDecode(jsonString));
 
         expect(parsed, isA<List<Map<String, dynamic>>>());
         expect(parsed.length, equals(1));
@@ -79,7 +80,7 @@ void main() {
       });
 
       test('callAPI handles complex nested JSON structures', () {
-        final jsonString = '''
+        final String jsonString = '''
         [{
           "name": {
             "common": "Nigeria",
@@ -90,7 +91,8 @@ void main() {
           }
         }]
         ''';
-        final parsed = List<Map<String, dynamic>>.from(jsonDecode(jsonString));
+        final List<Map<String, dynamic>> parsed =
+            List<Map<String, dynamic>>.from(jsonDecode(jsonString));
 
         expect(parsed, isA<List<Map<String, dynamic>>>());
         expect(parsed[0]['name'], isA<Map>());
@@ -103,19 +105,19 @@ void main() {
       });
 
       test('status code 400 triggers Bad Request error', () {
-        const expectedMessage =
+        const String expectedMessage =
             'Bad Request: You may have specified an unsupported field or invalid country data.';
         expect(expectedMessage.contains('Bad Request'), isTrue);
       });
 
       test('status code 404 triggers Country not found error', () {
-        const expectedMessage = 'Country not found';
+        const String expectedMessage = 'Country not found';
         expect(expectedMessage, equals('Country not found'));
       });
 
       test('status codes 500-599 trigger Server error', () {
-        for (var code in [500, 502, 503, 504]) {
-          final message = 'Server error: $code';
+        for (int code in <int>[500, 502, 503, 504]) {
+          final String message = 'Server error: $code';
           expect(message.contains('Server error'), isTrue);
         }
       });
@@ -123,25 +125,26 @@ void main() {
 
     group('Exception messages', () {
       test('no internet exception message is correct', () {
-        const expectedMessage = 'No internet connection';
+        const String expectedMessage = 'No internet connection';
         expect(expectedMessage, equals('No internet connection'));
       });
 
       test('invalid format exception message is correct', () {
-        const expectedMessage = 'Invalid response format';
+        const String expectedMessage = 'Invalid response format';
         expect(expectedMessage, equals('Invalid response format'));
       });
 
       test('empty data exception message is correct', () {
-        const expectedMessage = 'No country found. Specify a valid field';
+        const String expectedMessage =
+            'No country found. Specify a valid field';
         expect(
             expectedMessage, equals('No country found. Specify a valid field'));
       });
 
       test('generic API error includes status code and body', () {
-        const statusCode = 418;
-        const body = 'I am a teapot';
-        final message = 'API error: $statusCode - $body';
+        const int statusCode = 418;
+        const String body = 'I am a teapot';
+        final String message = 'API error: $statusCode - $body';
 
         expect(message.contains(statusCode.toString()), isTrue);
         expect(message.contains(body), isTrue);
