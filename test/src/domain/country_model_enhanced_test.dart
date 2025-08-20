@@ -10,7 +10,10 @@ void main() {
             'common': 'Nigeria',
             'official': 'Federal Republic of Nigeria',
             'nativeName': {
-              'eng': {'official': 'Federal Republic of Nigeria', 'common': 'Nigeria'}
+              'eng': {
+                'official': 'Federal Republic of Nigeria',
+                'common': 'Nigeria'
+              }
             }
           },
           'cca2': 'NG',
@@ -41,9 +44,15 @@ void main() {
           },
           'languages': {'eng': 'English'},
           'translations': {
-            'fra': {'official': 'République fédérale du Nigeria', 'common': 'Nigeria'}
+            'fra': {
+              'official': 'République fédérale du Nigeria',
+              'common': 'Nigeria'
+            }
           },
-          'flags': {'svg': 'https://flagcdn.com/ng.svg', 'png': 'https://flagcdn.com/w320/ng.png'},
+          'flags': {
+            'svg': 'https://flagcdn.com/ng.svg',
+            'png': 'https://flagcdn.com/w320/ng.png'
+          },
           'fifa': 'NGA',
           'landlocked': false,
           'flag': '🇳🇬',
@@ -206,7 +215,10 @@ void main() {
         'common': 'Nigeria',
         'official': 'Federal Republic of Nigeria',
         'nativeName': {
-          'eng': {'official': 'Federal Republic of Nigeria', 'common': 'Nigeria'}
+          'eng': {
+            'official': 'Federal Republic of Nigeria',
+            'common': 'Nigeria'
+          }
         }
       };
 
