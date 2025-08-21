@@ -1,70 +1,13 @@
 import 'dart:convert';
 import 'package:test/test.dart';
-import 'package:http/http.dart' as http;
-import 'package:mocktail/mocktail.dart';
 import 'package:rest_countries_data/src/data/api_helper.dart';
-
-class MockHttpClient extends Mock implements http.Client {}
 
 void main() {
   group('ApiHelper Tests', () {
-    group('Successful API calls', () {
-      test('callAPI returns list of maps when status code is 200', () async {
-        // Note: This is an integration-style test since ApiHelper creates its own http client
-        // For true unit testing, ApiHelper would need to accept an injected http client
-      });
-
-      test('callAPI handles empty list from API', () async {
-        // This would throw an exception according to the implementation
-      });
-    });
-
-    group('Error handling', () {
-      test('callAPI throws exception when response is empty list', () {
-        // According to implementation: if (rawData.isEmpty) throw Exception
-        expect(true, isTrue); // Placeholder - would need mock http client
-      });
-
-      test('callAPI throws exception for 400 Bad Request', () {
-        // Test that 400 status code throws 'Bad Request' exception
-        expect(true, isTrue); // Placeholder
-      });
-
-      test('callAPI throws exception for 404 Not Found', () {
-        // Test that 404 status code throws 'Country not found' exception
-        expect(true, isTrue); // Placeholder
-      });
-
-      test('callAPI throws exception for 500+ server errors', () {
-        // Test that 5xx status codes throw 'Server error' exception
-        expect(true, isTrue); // Placeholder
-      });
-
-      test('callAPI throws exception for SocketException (no internet)', () {
-        // Test that SocketException throws 'No internet connection'
-        expect(true, isTrue); // Placeholder
-      });
-
-      test('callAPI throws exception for FormatException (invalid JSON)', () {
-        // Test that FormatException throws 'Invalid response format'
-        expect(true, isTrue); // Placeholder
-      });
-
-      test('callAPI throws exception for other status codes', () {
-        // Test that other status codes throw 'API error' with details
-        expect(true, isTrue); // Placeholder
-      });
-    });
-
     group('API URL construction', () {
       test('callAPI constructs URL with baseUrl and apiUrl parameter', () {
         // Verify that URLs are correctly constructed with baseUrl + apiUrl
         expect(ApiHelper.baseUrl, equals('https://restcountries.com/v3.1'));
-      });
-
-      test('callAPI trims whitespace from apiUrl', () {
-        // Implementation calls apiUrl.trim()
-        expect(true, isTrue); // Placeholder
       });
     });
 
