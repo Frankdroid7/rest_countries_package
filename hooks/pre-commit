@@ -14,7 +14,7 @@ fi
 echo "Running Dart analyzer..."
 
 # Analyze with fatal-warnings (blocks on warnings/errors, not info)
-if ! dart analyze --fatal-warnings; then
+if ! dart analyze --fatal-infos; then
     echo "Dart analyzer found issues. Fix them before committing."
     exit 1
 fi
