@@ -13,7 +13,7 @@ fi
 
 echo "Running Dart analyzer..."
 
-# Analyze with fatal-warnings (blocks on warnings/errors, not info)
+# Analyze with fatal-infos (blocks on all issues: info, warnings, and errors)
 if ! dart analyze --fatal-infos; then
     echo "Dart analyzer found issues. Fix them before committing."
     exit 1

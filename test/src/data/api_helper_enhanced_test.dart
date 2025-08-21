@@ -95,7 +95,7 @@ void main() {
             List<Map<String, dynamic>>.from(jsonDecode(jsonString));
 
         expect(parsed, isA<List<Map<String, dynamic>>>());
-        expect(parsed[0]['name'], isA<Map>());
+        expect(parsed[0]['name'], isA<Map<dynamic, dynamic>>());
       });
     });
 

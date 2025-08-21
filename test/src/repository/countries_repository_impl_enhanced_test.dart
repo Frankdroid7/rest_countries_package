@@ -216,7 +216,7 @@ void main() {
             () => mockCountriesApi.getCountryByRegion(region: 'Europe'),
           ).thenAnswer(
             (_) => Future<List<Map<String, dynamic>>>.value(
-              List.generate(
+              List<Map<String, dynamic>>.generate(
                 10,
                 (int i) => <String, dynamic>{
                   'name': <String, Object>{'common': 'Country $i'}
