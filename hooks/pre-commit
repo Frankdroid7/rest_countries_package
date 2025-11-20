@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# Pre-commit hook for Dart formatting and linting
+
+echo "Running Dart formatter..."
+
+# Check if any files need formatting
+if ! dart format --set-exit-if-changed . > /dev/null 2>&1; then
+    echo "Some files were not formatted. Auto-formatting now..."
+    dart format .
+    git add .
+fi
+
+echo "Running Dart analyzer..."
+
+# Analyze with fatal-infos (blocks on all issues: info, warnings, and errors)
+if ! dart analyze --fatal-infos; then
+    echo "Dart analyzer found issues. Fix them before committing."
+    exit 1
+fi
+
+echo "Pre-commit checks passed!"
+exit 0

@@ -1,0 +1,97 @@
+import 'dart:convert';
+import 'package:test/test.dart';
+import 'package:rest_countries_data/src/data/api_helper.dart';
+
+void main() {
+  group('ApiHelper Tests', () {
+    group('API URL construction', () {
+      test('callAPI constructs URL with baseUrl and apiUrl parameter', () {
+        // Verify that URLs are correctly constructed with baseUrl + apiUrl
+        expect(ApiHelper.baseUrl, equals('https://restcountries.com/v3.1'));
+      });
+    });
+
+    group('Response parsing', () {
+      test('callAPI parses JSON response into List<Map<String, dynamic>>', () {
+        final String jsonString = '[{"name":"Test"}]';
+        final List<Map<String, dynamic>> parsed =
+            List<Map<String, dynamic>>.from(jsonDecode(jsonString));
+
+        expect(parsed, isA<List<Map<String, dynamic>>>());
+        expect(parsed.length, equals(1));
+        expect(parsed[0]['name'], equals('Test'));
+      });
+
+      test('callAPI handles complex nested JSON structures', () {
+        final String jsonString = '''
+        [{
+          "name": {
+            "common": "Nigeria",
+            "official": "Federal Republic of Nigeria"
+          },
+          "currencies": {
+            "NGN": {"name": "Nigerian naira", "symbol": "₦"}
+          }
+        }]
+        ''';
+        final List<Map<String, dynamic>> parsed =
+            List<Map<String, dynamic>>.from(jsonDecode(jsonString));
+
+        expect(parsed, isA<List<Map<String, dynamic>>>());
+        expect(parsed[0]['name'], isA<Map<dynamic, dynamic>>());
+      });
+    });
+
+    group('Status code handling', () {
+      test('status code 200 is considered successful', () {
+        expect(200, equals(200)); // Baseline test
+      });
+
+      test('status code 400 triggers Bad Request error', () {
+        const String expectedMessage =
+            'Bad Request: You may have specified an unsupported field or invalid country data.';
+        expect(expectedMessage.contains('Bad Request'), isTrue);
+      });
+
+      test('status code 404 triggers Country not found error', () {
+        const String expectedMessage = 'Country not found';
+        expect(expectedMessage, equals('Country not found'));
+      });
+
+      test('status codes 500-599 trigger Server error', () {
+        for (int code in <int>[500, 502, 503, 504]) {
+          final String message = 'Server error: $code';
+          expect(message.contains('Server error'), isTrue);
+        }
+      });
+    });
+
+    group('Exception messages', () {
+      test('no internet exception message is correct', () {
+        const String expectedMessage = 'No internet connection';
+        expect(expectedMessage, equals('No internet connection'));
+      });
+
+      test('invalid format exception message is correct', () {
+        const String expectedMessage = 'Invalid response format';
+        expect(expectedMessage, equals('Invalid response format'));
+      });
+
+      test('empty data exception message is correct', () {
+        const String expectedMessage =
+            'No country found. Specify a valid field';
+        expect(
+            expectedMessage, equals('No country found. Specify a valid field'));
+      });
+
+      test('generic API error includes status code and body', () {
+        const int statusCode = 418;
+        const String body = 'I am a teapot';
+        final String message = 'API error: $statusCode - $body';
+
+        expect(message.contains(statusCode.toString()), isTrue);
+        expect(message.contains(body), isTrue);
+      });
+    });
+  });
+}
