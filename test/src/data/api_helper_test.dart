@@ -65,8 +65,294 @@ void main() {
         );
       },
     );
+
+    test(
+      'GIVEN country name endpoint, WHEN callAPI is called with valid name, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url = 'https://restcountries.com/v3.1/name/nigeria';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(nigeriaData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
+
+    test(
+      'GIVEN country code endpoint, WHEN callAPI is called with valid code, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url = 'https://restcountries.com/v3.1/alpha/ng';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(nigeriaData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
+
+    test(
+      'GIVEN currency endpoint, WHEN callAPI is called with valid currency, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url = 'https://restcountries.com/v3.1/currency/usd';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(mockData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
+
+    test(
+      'GIVEN language endpoint, WHEN callAPI is called with valid language, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url = 'https://restcountries.com/v3.1/lang/french';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(mockData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
+
+    test(
+      'GIVEN capital endpoint, WHEN callAPI is called with valid capital, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url = 'https://restcountries.com/v3.1/capital/london';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(mockData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
+
+    test(
+      'GIVEN region endpoint, WHEN callAPI is called with valid region, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url = 'https://restcountries.com/v3.1/region/africa';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(mockData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
+
+    test(
+      'GIVEN subregion endpoint, WHEN callAPI is called with valid subregion, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url =
+            'https://restcountries.com/v3.1/subregion/western%20africa';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(mockData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
+
+    test(
+      'GIVEN translation endpoint, WHEN callAPI is called with valid translation, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url = 'https://restcountries.com/v3.1/translation/france';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(mockData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
+
+    test(
+      'GIVEN demonym endpoint, WHEN callAPI is called with valid demonym, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url = 'https://restcountries.com/v3.1/demonym/american';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(mockData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
+
+    test(
+      'GIVEN invalid country name, WHEN callAPI is called, THEN throw a country not found exception',
+      () async {
+        final String url = 'https://restcountries.com/v3.1/name/invalidcountry';
+        when(() => mockApiHelper.callAPI(apiUrl: url))
+            .thenThrow(Exception('Country not found'));
+
+        expect(
+          () => mockApiHelper.callAPI(apiUrl: url),
+          throwsA(
+            predicate(
+              (Object? e) =>
+                  e is Exception && e.toString().contains('Country not found'),
+            ),
+          ),
+        );
+      },
+    );
+
+    test(
+      'GIVEN independent status endpoint, WHEN callAPI is called with independent status, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url =
+            'https://restcountries.com/v3.1/independent?status=true';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(mockData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
+
+    test(
+      'GIVEN calling code endpoint, WHEN callAPI is called with valid calling code, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url = 'https://restcountries.com/v3.1/callingcode/234';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(nigeriaData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
+
+    test(
+      'GIVEN full name endpoint, WHEN callAPI is called with full country name, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url =
+            'https://restcountries.com/v3.1/name/federal%20republic%20of%20nigeria?fullText=true';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(nigeriaData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
+
+    test(
+      'GIVEN multiple alpha codes endpoint, WHEN callAPI is called with multiple codes, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url =
+            'https://restcountries.com/v3.1/alpha?codes=ng,gh,bj';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(mockData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
+
+    test(
+      'GIVEN fields filter endpoint, WHEN callAPI is called with specific fields, THEN return a List<Map<String, dynamic>>',
+      () async {
+        final String url =
+            'https://restcountries.com/v3.1/all?fields=name,capital,population';
+        when(() => mockApiHelper.callAPI(apiUrl: url)).thenAnswer((_) =>
+            Future<List<Map<String, dynamic>>>.value(
+                List<Map<String, dynamic>>.from(jsonDecode(mockData))));
+
+        List<Map<String, dynamic>> result =
+            await mockApiHelper.callAPI(apiUrl: url);
+
+        expect(result, isA<List<Map<String, dynamic>>>());
+      },
+    );
+
+    test(
+      'GIVEN invalid currency code, WHEN callAPI is called, THEN throw an exception',
+      () async {
+        final String url =
+            'https://restcountries.com/v3.1/currency/invalidcurrency';
+        when(() => mockApiHelper.callAPI(apiUrl: url))
+            .thenThrow(Exception('Currency not found'));
+
+        expect(
+          () => mockApiHelper.callAPI(apiUrl: url),
+          throwsA(
+            predicate(
+              (Object? e) =>
+                  e is Exception && e.toString().contains('Currency not found'),
+            ),
+          ),
+        );
+      },
+    );
+
+    test(
+      'GIVEN invalid alpha code, WHEN callAPI is called, THEN throw an exception',
+      () async {
+        final String url = 'https://restcountries.com/v3.1/alpha/xyz';
+        when(() => mockApiHelper.callAPI(apiUrl: url))
+            .thenThrow(Exception('Invalid country code'));
+
+        expect(
+          () => mockApiHelper.callAPI(apiUrl: url),
+          throwsA(
+            predicate(
+              (Object? e) =>
+                  e is Exception &&
+                  e.toString().contains('Invalid country code'),
+            ),
+          ),
+        );
+      },
+    );
   });
 }
+
+String nigeriaData = """[
+  {
+    "name": {
+      "common": "Nigeria",
+      "official": "Federal Republic of Nigeria",
+      "nativeName": {
+        "eng": {"official": "Federal Republic of Nigeria", "common": "Nigeria"}
+      }
+    }
+  }
+]""";
 
 String mockData = """[
   {
